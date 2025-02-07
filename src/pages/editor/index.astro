@@ -1,0 +1,322 @@
+---
+// Import your MonacoEditor component
+import Site from '@/layouts/Site.astro';
+import MonacoEditor from './MonacoEditor.svelte';
+import { tw } from '@/tw';
+
+import { remark } from "remark";
+import remarkParse from "remark-parse";
+import remarkGFM from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkDirective from "remark-directive";
+import remarkCallouts from "@/plugins/callouts";
+import remarkReadingTime from "@/plugins/reading-time";
+import remarkProcessLinks from "@/plugins/process-links";
+// @ts-ignore
+import remarkFrontmatter from 'remark-frontmatter';
+import {matter} from 'vfile-matter';
+import { AppMapping, db } from 'astro:db';
+
+let markdownContent = `---
+title: "Document Title"
+---
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+## Another Heading 2
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+> [!IMPORTANT]
+> - Use 2 spaces at the end of a line to denote a line-break.
+> - Use an empty line to demarcate a new paragraph/block.
+> - Do not use H1 in a page.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+1. A ordered list  
+   Some subtext under a point.
+
+   Another paragraph under the same point.
+2. Point 2
+   1. Sub-point 1
+      1. Sub-point 1
+      2. Sub-point 2
+   2. Sub-point 2
+3. Point 3
+   
+- A unordered list
+- Point 2
+  - Sub-point 1
+    - Sub-point 1
+    - Sub-point 2
+  - Sub-point 2
+- Point 3
+
+> [!NOTE]  
+> A note block
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+> [!TIP]  
+> A tip block
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+> [!IMPORTANT]  
+> An important block
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+> [!CAUTION]  
+> A caution block
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+> [!WARNING]  
+> A warning block
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\`\`\`
+Code block
+\`\`\`
+
+Optionally, mention type of programming language to enable syntax highlighting:
+
+\`\`\`xml
+<sample>XML code</sample>
+\`\`\`
+
+<!-- [Block Image](assets/sample.jpg) -->
+
+Here is some in-line code: \`let x = y;\`  
+<!-- Here is an in-line image: ![inline image](assets/inline-sample.jpg) -->
+
+::video[Alternate text]{assets/video.mp4}
+
+- An external hyperlink: [link 1](https://google.com/)
+- A relative hyperlink: [link 2](Another%20Document.md)
+- A absolute hyperlink: [link 3](/ABC/xyz-document/)
+
+Other formatting options: _italics_, **bold**
+
+| Column 1 | Column 2 |
+| ----- | ----------- |
+| XYZ | ABC |
+| 216837 | The system displays incorrect data in the fields related to global lot attributes. | 
+| 123456 | Another entry | 
+`;
+let appShort = "";
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  markdownContent = formData.get('code')?.toString() ?? markdownContent;
+  appShort = formData.get('app')?.toString() ?? appShort;
+
+  const file = formData.get("file") as File | undefined;
+
+  if (file) {
+    markdownContent = (await file.text()) || markdownContent;
+  }
+}
+
+const renderedVFile = await remark()
+  .use(remarkParse)
+  .use(remarkGFM)
+  .use(remarkDirective)
+  .use(remarkProcessLinks(import.meta.env.BASE_URL, '../' + appShort + '/xyz/'))
+  .use(remarkCallouts)
+  .use(remarkRehype)
+  .use(rehypeStringify)
+  .use(remarkFrontmatter, {type: 'yaml', marker: '-'})
+  .use(() => (_, file) => matter(file))
+  .use(remarkReadingTime)
+  .process(markdownContent);
+const renderedContent = renderedVFile.toString();
+const frontmatter = renderedVFile.data['matter'] as {
+  title: string,
+  date?: Date,
+  type?: string,
+};
+
+const allApps = await db.select().from(AppMapping);
+
+const docStyle = tw`
+  prose
+  row-span-4
+
+  prose-code:[overflow-wrap:anywhere]
+  prose-neutral
+  
+  prose-table:border-[1.5px] 
+  prose-table:bg-gray-100 
+  prose-table:border-[#3a3a3a]
+  prose-table:rounded-lg
+  
+  prose-img:border
+  prose-img:cursor-zoom-in
+  prose-img:rounded-lg
+  prose-img:border-gray-300
+  prose-img:bg-gray-100
+  prose-img:max-w-96
+  prose-img:inline-block 
+  prose-img:m-0 
+  prose-img:my-3
+  prose-img:mr-1
+  prose-img:transition-all
+  prose-img:duration-500
+
+  [&_img.active]:max-w-full
+  [&_img.active]:cursor-zoom-out
+  
+  [&_ul>li>ul]:list-[circle]
+  [&_ul>li>ul>li>ul]:list-[square]
+  [&_ol>li>ol]:list-[lower-alpha]
+  [&_ol>li>ol>li>ol]:list-[lower-roman]
+  [&_li_>_p]:my-0.5
+  
+  prose-th:min-w-auto 
+  prose-table:overflow-x-scroll
+  [&_sup_>_a]:text-blue-500
+  prose-table:w-auto
+  prose-td:border-[1.5px]
+  prose-td:border-aptean-dark
+  prose-td:border-l-0
+  prose-td:border-b-0
+  prose-th:font-normal 
+  prose-th:text-[1.1em]
+  prose-th:tracking-normal
+  prose-th:text-white
+  prose-table:border-spacing-0
+  prose-table:border-separate
+  prose-table:text-sm
+  prose-table:md:text-base
+  prose-th:border-[1.5px]
+  prose-th:border-aptean-dark
+  prose-thead:bg-aptean-dark
+  prose-th:border-r-white
+  prose-td:p-2 
+  prose-th:p-2
+  
+  prose-headings:font-medium 
+  prose-h1:mt-0
+  prose-headings:my-5
+  
+  text-black
+  text-sm
+  md:text-base
+  leading-relaxed
+  p-6 pl-8 
+  max-w-none
+  
+  prose-headings:pt-4
+  prose-h1:pt-0
+
+  [&:after]:p-4
+  [&:after]:[content:'']
+`
+---
+
+<style is:global lang="scss">
+  blockquote.callout {
+    quotes: none;
+    @apply font-normal not-italic border rounded-lg p-0 my-6;
+
+    & > * {
+      @apply mx-4;
+    }
+    & > *:first-child {
+      @apply mt-4;
+    }
+    & > *:last-child {
+      @apply mb-4;
+    }
+
+    br:first-child {
+      display: none;
+    }
+
+    h6 {
+      @apply flex items-center gap-2 px-3 py-1.5 !m-0 !mb-4 rounded-t-lg font-semibold;
+    }
+ 
+  }
+
+  blockquote.note {
+    border: 1px solid theme("colors.gray.500");
+
+    &.note h6 {
+      color: white;
+      background: linear-gradient(to right, theme("colors.gray.500"), theme("colors.gray.600"));
+      border-bottom: theme("colors.gray.500");
+    }
+    &.note h6::before {
+      content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaXJjbGUtYWxlcnQiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PGxpbmUgeDE9IjEyIiB4Mj0iMTIiIHkxPSI4IiB5Mj0iMTIiLz48bGluZSB4MT0iMTIiIHgyPSIxMi4wMSIgeTE9IjE2IiB5Mj0iMTYiLz48L3N2Zz4=);
+      height: 20px;
+    }
+    &.note h6::after {
+      content: 'Note';
+    }
+  }
+
+  blockquote.important {
+    border: 1px solid theme("colors.gray.700");
+
+    &.important h6 {
+      color: white;
+      background: theme("colors.gray.700");
+      border-bottom: theme("colors.gray.700");
+    }
+    &.important h6::before {
+      content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS10cmlhbmdsZS1hbGVydCI+PHBhdGggZD0ibTIxLjczIDE4LTgtMTRhMiAyIDAgMCAwLTMuNDggMGwtOCAxNEEyIDIgMCAwIDAgNCAyMWgxNmEyIDIgMCAwIDAgMS43My0zIi8+PHBhdGggZD0iTTEyIDl2NCIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=);
+      height: 20px;
+    }
+    &.important h6::after {
+      content: 'Important';
+    }
+  }
+</style>
+
+<Site class='p-1 grid grid-rows-[1fr_auto] grid-cols-2 overflow-hidden'>
+  <MonacoEditor value={markdownContent} client:only="svelte" />
+  <form method="POST" enctype="multipart/form-data" data-astro-reload class="border-t border-white grid grid-rows-1 grid-cols-[1fr_1fr_auto]">
+    <input type="hidden" name="code" value={markdownContent}/>
+    <div class="m-1">
+      <label for="file-input" class="sr-only">Choose file</label>
+      <input type="file" name="file" id="file-input" class="block w-full border border-aptean-dark shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none
+        file:bg-aptean-dark file:text-white file:border-0
+        file:me-4
+        file:py-2.5 file:px-4
+        " 
+        onchange="document.querySelector('button[type=submit]').textContent = 'Load file'"
+      />
+    </div>
+    <select name="app" class="px-4 block w-full bg-gray-100 border-aptean-dark rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none my-1">
+      <option selected={!appShort}>Select app</option>
+      {allApps.map(app => <option selected={appShort === app.short} value={app.short}>{app.short} - {app.long}</option>)}
+    </select>
+    <button type="submit" class="bg-aptean-dark text-white p-2 text-center w-full m-1 rounded-lg">Preview</button>
+  </form>
+  <article class={`${docStyle} row-span-full col-start-2 overflow-auto`} >
+    <h1>{frontmatter.title}</h1>
+    <div class="text-neutral-500 flex items-center gap-2 -mt-3 -mb-2">
+      <span class="-mt-1">
+        {frontmatter.type ?? "Article"}
+        <!-- &bullet; -->
+        <!-- {frontmatter} -->
+      </span>
+    </div>
+    <Fragment set:html={renderedContent} />
+  </article>
+</Site>
+
+<script>
+  function handleEditorChange({ detail: value }: { detail: string }) {
+    const codeField = document.querySelector('input[name=code]') as HTMLInputElement;
+    codeField.value = value;
+  }
+  // @ts-ignore
+  window.addEventListener('editor-change', handleEditorChange);
+</script>

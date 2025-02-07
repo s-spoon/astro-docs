@@ -1,0 +1,175 @@
+---
+import Site from "@/layouts/Site.astro";
+import { tw } from "@/tw";
+import { getEntry } from "astro:content";
+import { db, eq } from "astro:db";
+import { Feedback, AppMapping } from 'astro:db';
+import { ThumbsUp, ThumbsDown, CircleMinus, MoveRight, Check, IterationCw } from "lucide-svelte";
+import RadialGauge from "@/components/feedback/RadialGauge.svelte";
+
+let activeEntry = NaN;
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const newProgress = Number(formData.get('progress'));
+  const recordID = Number(formData.get('id'));
+
+  await db.update(Feedback).set({ progress: newProgress }).where(eq(Feedback.id, recordID));
+
+  activeEntry = recordID;
+}
+
+const entries = await db.select().from(Feedback);
+const appEntries = await db.select().from(AppMapping);
+const cards = entries.map(entry => {
+  let cardIcon, cardIconStyle = "", cardStyle = "";
+  let app, link, title;
+
+  switch (entry.rating) {
+    case -1:
+      cardIcon = ThumbsDown;
+      cardIconStyle = tw`fill-white bg-red-400 stroke-red-900 border-red-900`
+      break;
+    case 1:
+      cardIcon = ThumbsUp;
+      cardIconStyle = tw`fill-white bg-green-400 stroke-green-900 border-green-900`
+      break;
+    default:
+      cardIcon = CircleMinus;
+      cardIconStyle = tw`fill-white bg-neutral-100 stroke-neutral-400 border-neutral-400`
+      break;
+  }
+  cardIconStyle += tw` inline-block absolute -top-3 -left-3 w-8 h-8 p-1 rounded-full border-2`;
+
+  switch (entry.progress) {
+    case 1:
+      cardStyle = tw`bg-amber-300 text-black`;
+      break;
+    case 2:
+      cardStyle = tw`bg-green-700 text-white`;
+      break;
+    default:
+      cardStyle = tw`bg-stone-600 text-white`;
+      break;
+  }
+
+  const appEntry = appEntries.find(e => e.short.toLowerCase() === entry.slug.split('/')[0].toLowerCase());
+  app = appEntry?.short;
+  link = entry.slug === 'unknown' ? '#' : entry.slug.startsWith('http') ? entry.slug : '../' + appEntry?.short + '/' + entry.slug.split('/').slice(1).join('/');
+
+  title = getEntry("docs", entry.slug).then(entry => entry?.data.title);
+
+  return {
+    ...entry,
+    cardIcon,
+    cardIconStyle,
+    cardStyle,
+    app,
+    link,
+    title
+  }
+  /* @ts-ignore */
+}).toSorted((a, b) => b.date - a.date);
+---
+
+<style>
+  article > div.card-body {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    @apply rounded-b-md
+  }
+  article.active {
+    @apply col-span-full h-96;
+  }
+  article.active > div.card-body {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    @apply rounded-none
+  }
+  article.active > form {
+    @apply flex;
+  }
+</style>
+
+<Site class="grid grid-rows-1 grid-cols-[1fr_auto] content-start bg-neutral-50 overflow-hidden">
+  <section class="grid md:grid-cols-2 lg:grid-cols-3 p-6 gap-4 overflow-auto">
+    <h1 class="text-2xl col-span-full">Feedback</h1>
+    {cards.map(async entry => (
+      <article onclick="changeActiveCard(this)" class={`${activeEntry === entry.id ? 'active' : ''} grid grid-rows-[auto_1fr] relative transition-all h-auto border-2 border-aptean-dark rounded-lg shadow-[4px_4px] hover:shadow-[2px_2px] hover:shadow-neutral-200 shadow-neutral-400 ${entry.cardStyle}`}>
+        <div class="pl-6">
+          <h2 class:list={["pt-3 pr-3 text-base leading-tight"]}>
+            <entry.cardIcon class={entry.cardIconStyle} />
+            <a href={entry.link}>
+              {entry.title}
+              &mdash; {entry.app}
+            </a>
+          </h2>
+          <p class="pb-3 mt-0 h-min w-full">{entry.date.toLocaleDateString('en-US', { day: '2-digit', month: 'long' })}</p>
+        </div>
+        <div class="card-body prose leading-normal overflow-hidden max-w-none py-2 w-full grow border-t-2 border-t-aptean-dark px-4 bg-white" set:text={entry.content}></div>
+        <form method="POST" class="hidden pb-4 pr-4 rounded-b-md justify-end bg-white text-white">
+          <input type="hidden" name="id" value={entry.id} />
+          <input type="hidden" name="progress" value={(entry.progress + 1) % 3} />
+          {entry.progress === 0 && <button type="submit" class="border border-amber-900 bg-amber-300 text-black px-3 py-2 rounded-lg">In Progress <MoveRight class="inline-block" /></button>}
+          {entry.progress === 1 && <button type="submit" class="border border-teal-900 bg-teal-700 px-3 py-2 rounded-lg">Complete <Check class="inline-block" /></button>}
+          {entry.progress === 2 && <button type="submit" class="border border-slate-900 bg-slate-500 px-3 py-2 rounded-lg">Revert <IterationCw class="inline-block" /></button>}
+        </form>
+      </article>
+    ))}
+  </section>
+  <aside class="border-l-2 border-aptean-dark p-6 flex flex-col justify-start overflow-y-auto overflow-x-hidden">
+    <h1 class="text-2xl col-span-full mb-4">Dashboard</h1>
+    <div class="grid grid-rows-[1.5rem_1.5rem_1.5rem] grid-cols-[auto_1fr] gap-x-1 gap-y-1 mb-6 items-center justify-center">
+      <span class="text-5xl -mt-2 text-green-700">&squarf;</span> Complete
+      <span class="text-5xl -mt-2 text-amber-300">&squarf;</span> In Progress
+      <span class="text-5xl -mt-2 text-stone-600">&squarf;</span> Pending
+    </div>
+    <RadialGauge
+      numerator={entries.filter(e => e.progress === 2).length}
+      denominator={cards.length}
+      subtext="Completion Ratio"
+      foreground="text-sky-700 border-sky-700 w-full h-min-content"
+      background="text-gray-200"
+      addtlStyles={tw`[&_div]:-translate-y-[40%] [&_.subtext]:mt-1`}
+    />
+    <br/>
+    <RadialGauge
+      numerator={entries.filter(e => e.progress === 2).length}
+      denominator={cards.length}
+      subtext="Complete"
+      foreground="text-green-700 border-green-700 w-full h-min-content"
+      background="text-gray-200"
+      options={{ showDenominator: false }}
+    />
+    <br/>
+    <RadialGauge
+      numerator={entries.filter(e => e.progress === 1).length}
+      denominator={cards.length}
+      subtext="In Progress"
+      foreground="text-amber-700 border-amber-700 w-full h-min-content"
+      background="text-gray-200"
+      options={{ showDenominator: false }}
+    />
+    <br/>
+    <RadialGauge
+      numerator={entries.filter(e => e.progress === 0).length}
+      denominator={cards.length}
+      subtext="Pending"
+      foreground="text-stone-600 border-stone-600"
+      background="text-gray-200"
+      options={{ showDenominator: false }}
+    />
+  </aside>
+</Site>
+
+<script>
+  function changeActiveCard(el: HTMLElement){
+    if (el.classList.contains('active'))
+      return el.classList.remove('active');
+
+    document.querySelectorAll('section > article').forEach(card => card.classList.remove('active'));
+    el.classList.toggle('active')
+  }
+  Object.assign(window, { changeActiveCard });
+</script>

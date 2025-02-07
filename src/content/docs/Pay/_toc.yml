@@ -1,0 +1,28 @@
+- name: "Introduction"
+  href: introduction.md  
+- name: "Roles"
+  href: roles.md
+- name: "Overview of Merchant Portal"
+  href: overview_of_merchant_portal.md
+  # items:
+  #   _ name: "Filter Options"
+  #     href: Filter_Options.md
+- name: "Payments within the Merchant Portal"
+  href: payments_within_the_merchant_portal.md
+  # items:
+  #   _ name: "View Payments"
+  #     href: View_Payments.md
+  #   _ name: "Virtual Terminal"
+  #     href: Virtual_Terminal.md
+- name: "Submit Payment Request"
+  href: submit_payment_request.md
+- name: "Receive Payments"
+  href: receive_payments.md
+- name: "Conduct Refunds"
+  href: conduct_refunds.md
+- name: "Statements"
+  href: statements.md
+- name: "Payout Reports"
+  href: payout_reports.md
+- name: "Customer Support Contact"
+  href: customer_support_contact.md

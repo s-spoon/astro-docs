@@ -1,0 +1,71 @@
+---
+import Site from "@/layouts/Site.astro";
+import getTOC, { type TOCEntry } from "@/TOC";
+import { getApp } from "./_getApp";
+import ViewChild from "@/components/home/ViewChild.svelte";
+import Breadcrumb from "@/components/home/Breadcrumb.svelte";
+
+const { appName } = Astro.params as { appName: string };
+
+let appLong: string | undefined;
+let remappedTOC: TOCEntry[] = [];
+
+try {
+  const appShort = await getApp(appName).then((a) => a.short);
+  appLong = await getApp(appName).then((a) => a.long);
+  const ymlTOC = await getTOC(appShort);
+  remappedTOC = ymlTOC.map(function setActive(entry) {
+    let active = false;
+    if (entry.href) active = Astro.url.pathname.toLowerCase().includes(entry.href.toLowerCase());
+
+    if (entry.items) entry.items = entry.items.map(setActive);
+
+    return { ...entry, active };
+  });
+} catch (err) {
+  console.error(err);
+  return new Response(null, { status: 404 });
+}
+---
+
+<Site class="overflow-hidden flex flex-col">
+  <Breadcrumb client:only="svelte" appName={appName} />
+  <header class="py-4 bg-aptean-dark mx-8">
+    {
+      appLong ? (
+        <h2 class="font-semibold text-3xl text-white pl-2">{appLong}</h2>
+      ) : (
+        <h2 class="font-semibold text-3xl text-white pl-2">Lodaing...</h2>
+      )
+    }
+  </header>
+  <div class="overflow-auto">
+    <ViewChild baseURI={import.meta.env.BASE_URL} client:only="svelte" remappedTOC={remappedTOC} />
+  </div>
+</Site>
+<!-- ---
+import Site from "@/layouts/Site.astro";
+import getTOC, { flattenTOC, type TOCEntry } from "@/TOC";
+import { getApp } from "./_getApp";
+
+const { appName } = Astro.params as { appName: string };
+let defaultEntry: TOCEntry | undefined,
+  ymlTOC: TOCEntry[] = [];
+
+try {
+  const appShort = await getApp(appName).then((a) => a.short);
+  const TOC = await getTOC(appShort);
+  defaultEntry = TOC.find(function isDefault(entry) {
+    return entry.default;
+  });
+  ymlTOC = TOC;
+} catch (err) {
+  console.error(err);
+  return new Response(null, { status: 404 });
+}
+
+if (!defaultEntry) defaultEntry = ymlTOC.reduce(flattenTOC, []).find((e) => e.href);
+---
+
+{defaultEntry && <meta http-equiv='refresh' content=`0; url=${import.meta.env.BASE_URL}${defaultEntry.href}` />}
+<Site /> -->

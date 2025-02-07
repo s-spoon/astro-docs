@@ -1,0 +1,4 @@
+[submodule "src/content/docs"]
+  path = src/content/docs
+  url = git@github.com:Shared-Technology-Group/docs-app-central.git
+  branch = main

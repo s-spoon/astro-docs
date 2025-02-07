@@ -1,0 +1,151 @@
+- name: "Release Notes"
+  href: release-notes.md
+  items:
+    - name: "Highlights of Version 1.0"
+      href: highlights-version-1.0.md
+- name: "Overview"
+  href: overview.md
+  items:
+    - name: "Getting Started"
+      href: getting-started.md
+- name: "Your AppCentral Workspace"
+  href: welcome-page.md
+  items:
+    - name: "AI Assistant"
+      href: ai-assistant.md
+      items:
+        - name: "Access Your AI Assistant"
+          href: access-your-ai-assistant.md
+        - name: "Search Contextual Help with AI Assistant"
+          href: search-context-ai-assistant.md
+- name: "My Solution"
+  href: my-solution.md
+  items:
+    - name: "All Applications (Apps)"
+      href: all-apps.md
+      items:
+        - name: "Activation and Setup of Applications"
+          href: activate-setup-applications.md
+          items:
+            - name: "Getting Started with M2M ERP"
+              href: getting-started-m2m-erp.md
+            - name: "Aptean Pay"
+              href: aptean-pay.md
+            - name: "Aptean Invoice Automation"
+              href: aptean-invoice-automation.md
+            - name: "Aptean EDI"
+              href: aptean-edi.md
+            - name: "Configure Aptean Print"
+              href: aptean-print.md
+            - name: "Aptean CRM"
+              href: aptean-crm-setup.md
+            - name: "Aptean EAM"
+              href: aptean-eam-setup.md
+            - name: "Aptean Ship"
+              href: aptean-ship-setup.md
+    - name: "Insights"
+      href: insights.md
+      items:
+        - name: "License"
+          href: license.md
+    - name: "Connect"
+      href: connect.md
+      items:
+        - name: "Feed"
+          href: feed.md
+        - name: "Support Cases"
+          href: support-cases.md
+          items:
+            - name: "Manage Support Cases"
+              href: create-manage-cases.md
+        - name: "Feedback"
+          href: feedback.md
+        - name: "Ideas"
+          href: ideas.md
+- name: "Subscription Center"
+  href: subscription-center.md
+  items:
+    - name: "Subscription"
+      href: subscription.md
+      items:
+        - name: "Summary of Additional Features and Services"
+          href: summary-additional-features-and-services.md
+        - name: "Request Additional feature and Services"
+          href: request-additional-feature-services.md
+    - name: "Integrations"
+      href: integrations.md
+      items:
+        - name: "Insights into Application Integrations"
+          href: insights-into-application-integrations.md
+        - name: "Integrate Applications"
+          href: integrate-applications.md
+          items:
+            - name: "Integrate M2M with Aptean EAM"
+              href: integrating-m2m-eam.md
+              items:
+                - name: "Integrate Vendor Data"
+                  href: integrate-vendor-data.md
+                - name: Integrate Purchase Category
+                  href: integrate-purchase-category.md
+                - name: Integrate Purchase Order to Requisition
+                  href: integrate-purchase-order-requisition.md
+            - name: "Integrate M2M with Aptean CRM"
+              href: integrating-m2m-crm.md
+              items:
+                - name: "Integrate Account Master and Contact Data"
+                  href: integrate-account-master-data.md
+                - name: "Integrate Sales Order"
+                  href: integrate-sales-order.md
+            - name: "Integrate M2M with Aptean Ship"
+              href: integrating-m2m-ship.md
+            - name: "Integrate M2M with Aptean Pay"
+              href: integrating-m2m-pay.md
+            - name: "Integrate M2M with Aptean EDI"
+              href: integrating-m2m-edi.md
+    - name: "Billing"
+      href: billing.md
+      items:
+        - name: "Invoices"
+          href: invoices.md
+- name: "User Center"
+  href: user-center.md
+  items:
+    - name: "Access Management"
+      href: access-management.md
+      items:
+        - name: "Groups"
+          href: groups.md
+          items:
+            - name: "Create a New Group"
+              href: create-a-new-group.md
+            - name: "Edit a Group"
+              href: edit-group.md
+        - name: "Users"
+          href: users.md
+          items:
+            - name: "Overview of User Roles and Permissions"
+              href: create-users-assign-roles.md
+            - name: "New User"
+              href: new-user.md
+            - name: "Reset Password"
+              href: reset-password.md
+            - name: "Sync All Users"
+              href: sync-all-users.md
+            - name: "Import Users"
+              href: import-users.md
+        - name: "Federation"
+          href: federation.md
+          items:
+            - name: Create Identity Provider
+              href: create-identity-provider.md
+        - name: "IAM"
+          href: iam.md
+    - name: "Activities & Audit"
+      href: activities-audit.md
+      items:
+        - name: "Integration Events"
+          href: integration-events.md
+        - name: "Activation Usage"
+          href: activation-usage.md
+        - name: "Audit Log"
+          href: audit-log.md

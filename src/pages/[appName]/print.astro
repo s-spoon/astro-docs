@@ -1,0 +1,299 @@
+---
+import { tw } from "@/tw"
+import { getCollection } from "astro:content"
+import getTOC, { flattenTOC, type TOCEntry } from "@/TOC";
+
+const appName = Astro.params.appName as string;
+const allDocs = await getCollection('docs', (e) => {
+  return e.id.includes(appName)
+});
+
+const ymlTOC = await getTOC(appName);
+const flattenedTOC = ymlTOC.reduce(flattenTOC, []);
+
+const listedDocs = flattenedTOC.flatMap(function (entry): (typeof allDocs)[number] | [] {
+  if (!entry.href) return [];
+
+  const document = allDocs.find(e => e.slug.includes(entry.href!.toLowerCase().slice(0, -1)));
+  if (!document) return [];
+
+  return document!;
+})
+
+const renderedDocs = await Promise.all(listedDocs.map(async e => {
+  return {...e, rendered: await e.render()}
+}));
+
+const docStyle = tw`
+  prose
+  row-span-4
+
+  prose-code:[overflow-wrap:anywhere]
+  prose-neutral
+
+  prose-a:text-blue-600 hover:prose-a:text-blue-500
+  
+  prose-table:border-[1.5px] 
+  prose-table:bg-gray-100 
+  prose-table:border-[#3a3a3a]
+  prose-table:rounded-lg
+  
+  prose-img:border
+  prose-img:cursor-zoom-in
+  prose-img:rounded-lg
+  prose-img:border-gray-300
+  prose-img:bg-gray-100
+  prose-img:max-w-96
+  prose-img:inline-block 
+  prose-img:m-0 
+  prose-img:my-3
+  prose-img:mr-1
+  prose-img:transition-all
+  prose-img:duration-500
+
+  [&_img.active]:max-w-full
+  [&_img.active]:cursor-zoom-out
+  
+  [&_ul>li>ul]:list-[circle]
+  [&_ul>li>ul>li>ul]:list-[square]
+  [&_ol>li>ol]:list-[lower-alpha]
+  [&_ol>li>ol>li>ol]:list-[lower-roman]
+  [&_li_>_p]:my-0.5
+  
+  prose-th:min-w-auto 
+  prose-table:overflow-x-scroll
+  [&_sup_>_a]:text-blue-500
+  prose-table:w-auto
+  prose-td:border-[1.5px]
+  prose-td:border-aptean-dark
+  prose-td:border-l-0
+  [&_th:last-of-type]:border-r-0
+  [&_td:last-of-type]:border-r-0
+  prose-td:border-b-0
+  prose-th:font-normal 
+  prose-th:text-[1.1em]
+  prose-th:tracking-normal
+  prose-th:text-white
+  prose-table:border-spacing-0
+  prose-table:border-separate
+  prose-table:text-sm
+  prose-table:md:text-base
+  prose-th:border-[1.5px]
+  prose-th:border-aptean-dark
+  prose-thead:bg-aptean-dark
+  prose-th:border-r-white
+  prose-td:p-2 
+  prose-th:p-2
+  
+  prose-headings:font-medium 
+  prose-h1:mt-0
+  prose-headings:my-5
+  
+  text-black
+  text-sm
+  md:text-base
+  leading-relaxed
+  p-6 pl-8 py-0
+  max-w-none
+  
+  prose-headings:pt-4
+  prose-h1:pt-0
+
+  [&:after]:p-4
+  [&:after]:[content:'']
+
+  [page-break-after:always]
+`
+  // [&_table]:[page-break-inside:avoid]
+---
+
+<style is:global lang="scss">
+  blockquote.callout {
+    quotes: none;
+    page-break-inside: avoid;
+    @apply font-normal not-italic border rounded-lg p-0 my-6 w-fit;
+
+    & > * {
+      @apply mx-4;
+    }
+    & > *:first-child {
+      @apply mt-4;
+    }
+    & > *:last-child {
+      @apply mb-4;
+    }
+
+    br:first-child {
+      display: none;
+    }
+
+    h6 {
+      @apply flex items-center gap-2 px-3 py-1.5 !m-0 !mb-4 rounded-t-lg font-semibold;
+    }
+    
+  }
+
+  blockquote.note {
+    border: 1px solid theme("colors.gray.500");
+
+    h6 {
+      color: white;
+      background: linear-gradient(to right, theme("colors.gray.500"), theme("colors.gray.600"));
+      border-bottom: theme("colors.gray.500");
+    }
+    h6::before {
+      content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaXJjbGUtYWxlcnQiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PGxpbmUgeDE9IjEyIiB4Mj0iMTIiIHkxPSI4IiB5Mj0iMTIiLz48bGluZSB4MT0iMTIiIHgyPSIxMi4wMSIgeTE9IjE2IiB5Mj0iMTYiLz48L3N2Zz4=);
+      height: 1.2rem;
+      max-height: 100%;
+    }
+    h6::after {
+      content: 'Note';
+    }
+  }
+
+  blockquote.important {
+    border: 1px solid theme("colors.gray.700");
+
+    h6 {
+      color: white;
+      background: theme("colors.gray.700");
+      border-bottom: theme("colors.gray.700");
+    }
+    h6::before {
+      content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS10cmlhbmdsZS1hbGVydCI+PHBhdGggZD0ibTIxLjczIDE4LTgtMTRhMiAyIDAgMCAwLTMuNDggMGwtOCAxNEEyIDIgMCAwIDAgNCAyMWgxNmEyIDIgMCAwIDAgMS43My0zIi8+PHBhdGggZD0iTTEyIDl2NCIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=);
+      height: 20px;
+    }
+    h6::after {
+      content: 'Important';
+    }
+  }
+
+  @page {
+    size: auto;
+
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  .toc-list, .toc-list ol {
+    list-style-type: none;
+  }
+
+  .toc-list {
+    padding: 0;
+  }
+
+  .toc-list ol {
+    padding-inline-start: 2ch;
+    // page-break-inside: avoid;
+  }
+
+  .toc-list > li > a {
+    font-weight: bold;
+    margin-block-start: 1em;
+  }
+
+  .toc-list li > a {
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: auto max-content;
+      align-items: end;
+  }
+
+  .toc-list li > a > .title {
+      position: relative;
+      overflow: hidden;
+  }
+
+  .toc-list li > a .leaders::after {
+      position: absolute;
+      padding-inline-start: .25ch;
+      content: " . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . ";
+      text-align: right;
+  }
+
+  .toc-list li > a > .page {
+      min-width: 2ch;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+  }
+
+  .toc-list {
+    // page-break-inside: avoid;
+    page-break-after: always;
+    @apply mx-6;
+  }
+</style>
+
+<meta charset="utf-8" />
+
+<article class={docStyle}>
+  <h1>Copyright and Trademarks</h1>
+  <p>Copyright © 2024 Aptean, Inc. All Rights Reserved. These materials are provided by Aptean for informational purposes only, without representation or warranty of any kind, and Aptean shall not be liable for errors or omissions with respect to the materials. The only warranties for Aptean products and services are those set forth in the express warranty statements accompanying such products and services, if any, and nothing herein shall be construed as constituting an additional warranty. No part of this publication may be reproduced or transmitted in any form or for any purpose without the express written permission of Aptean. The information contained herein may be changed without prior notice. Some products marketed by Aptean contain proprietary software components of other software vendors. Aptean and other Aptean products and services referenced herein as well as their respective logos are registered trademarks or trademarks of Aptean or its affiliated companies.</p>
+
+  <p>
+    Office<br/>
+    4325 Alexander Drive, Suite 100, Alpharetta, GA 30022-3740<br/>
+    Ph no. - <a href="tel:+18854112783">+1 885-411-2783</a><br/>
+    Email - <a href="mailto:info@aptean.com">info@aptean.com</a>
+  </p>
+</article>
+
+<h1 class="text-3xl font-semibold mx-6">Contents</h1>
+<ol class="toc-list" role="list">
+  {ymlTOC.map(function tableEntry(e){
+    return (!e.notFound || e.items?.length) && (
+      <li>
+        <a href={e.href && `#doc-${e.href!.toLowerCase().slice(0,-1)}`}>
+          <span class="title">{e.name}<span class="leaders" aria-hidden="true"></span></span>
+          <span data-href="#Introduction" class="page"><span class="visually-hidden">&nbsp;</span></span>
+        </a>
+        {e.items?.length && <ol role="list">{e.items.map(tableEntry)}</ol>}
+      </li>
+    )
+  })}
+</ol>
+
+{
+  renderedDocs.map(entry => {
+    return (
+      <article class={docStyle}>
+        <h1 id={`doc-${entry.slug}`}>{entry.data.title}</h1>
+        <div class="text-neutral-500 flex items-center gap-2 -mt-3 -mb-2">
+          <span class="-mt-1">
+            {entry.data.type}
+            &bullet;
+            {entry.rendered.remarkPluginFrontmatter.minutesRead}
+            &bullet;
+            {entry.data.releaseDate}
+          </span>
+          <div class="border-[0.5px] border-neutral-500 grow h-0 my-auto"></div>
+        </div>
+        <entry.rendered.Content />
+      </article>
+    )
+  })
+}
+
+<script>
+  
+</script>

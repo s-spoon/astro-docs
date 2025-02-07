@@ -1,0 +1,44 @@
+---
+
+title: "Managing Email Communications"
+draft: false
+type: Article
+
+---
+
+You can compose and send emails to customers, distributors, vendors, prospects, or employees from specific pages in Made2Manage.
+
+The table below lists these pages, the recipients for each message, and the text that appears in the message's **Subject** field.
+
+|Messages initiated from this page| Are  addressed to the following email addresses | Use this text in the Subject field|
+|----|---|---------|
+| **(APCASH) - Approve Invoice for Payment page**               | vendor's email address in the **E-Mail** field of the **VEND** page                                                                                                                        | Regarding Invoice #000                                                          |
+| **Cash Receipts (CASH)**                                      | customer's address in the **CUST** page                                                                                                                                                    | Regarding Check #000                                                            |
+| **Contacts (CTAC)**                                           | vendor contact's email address in the **E-Mail** field of the **CTAC** page                                                                                                                | Blank                                                                            |
+| **Customers (CUST)**                                          | customer's email address in the **Email** field of the **CUST** page                                                                                                                       | Blank                                                                            |
+| **Customer Credit Status (ASTAT)**                            | Contact's email address in the **E-Mail** field of the **CRMCONT** page                                                                                                                    | Blank                                                                            |
+| **Customer Invoice and Credit Memo (ARINV)**                  | customer's address in the **CUST** page                                                                                                                                                    | Regarding Invoice #000                                                          |
+| **Daily Labor (LABR)**                                        | employee's address in the **EMPL** page                                                                                                                                                    | Regarding Labor Entry of (date of labor entry)                                   |
+| **Employees (EMPL)**                                          | Contact's email address in the **E-Mail** field of the **EMPL** window                                                                                                                     | Blank                                                                            |
+| **Job Orders (JO)**                                           | customer's address in the **CUST** page                                                                                                                                                    | Regarding Job Order # 000                                                       |
+| **Miscellaneous AP Payments (APMISC)**                        | vendor's address in the **VEND** page                                                                                                                                                      | Regarding Check #000, Regarding letter of credit, Regarding Wire Transfer #000 |
+| **Purchase Orders (PO)**                                      | vendor's address in the **VEND** page                                                                                                                                                      | Regarding Purchase Order #000                                                   |
+| **Quotes (QUOTE)**                                            | customer's address in the **CUST** page, customer contact's address in the **CTAC** page, customers address in the **ADDR** page                                                           | Regarding Quote #000                                                            |
+| **Receiver (customer) (RECV)**                                | customer's address in the **CUST** page                                                                                                                                                    | Regarding Return Items (receiver #000)                                          |
+| **Receiver (misc.) (RECV)**                                   | vendor's address in the **VEND** page                                                                                                                                                      | Blank                                                                            |
+| **Receiving (vendor) (RECV)**                                 | vendor's address in the **VEND** page for purchase order receivers                                                                                                                         | Regarding Receiver #000 (Purchase Order #000)                                  |
+| **Request for Quote (RFQ)**                                    | vendor's email address in the **E-mail** field of the **VEND** page                                                                                                                        | Blank                                                                            |
+| **Sales Orders (SO)**                                         | customer's address in the **CUST** page, customer contact's address in the **CTAC** page, customer's sold-to address in the **ADDR** page, customer's ship-to address in the **ADDR** page | Regarding Sales Order #000                                                      |
+| **Shipping (SHIP) - for sales order shippers**                | customer's address in the **CUST** page                                                                                                                                                    | Regarding Shipper #000                                                          |
+| **Shipping (SHIP) - for miscellaneous shippers**              | customer's address in the **CUST** page                                                                                                                                                    | Regarding Shipper #000                                                          |
+| **Shipping (SHIP) - for return purchase order shippers**      | customer's address in the **CUST** page                                                                                                                                                    | Regarding Shipper #000                                                          |
+| **Shipping (SHIP) - for subcontract purchase order shippers** | vendor's email address in the **E-mail** field of the **VEND** page                                                                                                                        | Regarding Sub-Contract task (order #000)                                        |
+| **Vendors (VEND)**                                            | vendor's email address in the **E-mail** field of the **VEND** page                                                                                                                        | Blank                                                                            |
+| **Vendor Invoice & Debit Memo (APINV)**                       | vendor's address in the **VEND** page                                                                                                                                                      | Regarding Invoice #000                                                          |
+| **Vendor Service Request (SYCSLV)**                           | vendor's email address in the **E-mail** field                                                                                                                                             |  Blank                                                                           |
+| **Void Check (VCHK)**                                         | vendor's address in the **VEND** page                                                                                                                                                      | Regarding Check #000, Regarding letter of credit, Regarding Wire Transfer #000 |
+|
+
+
+
+​

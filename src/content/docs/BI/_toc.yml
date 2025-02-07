@@ -1,0 +1,22 @@
+- name: "Aptean BI for M2M - User Guide v2.0"
+  items:
+    - name: "Introduction - Aptean BI for M2M"
+      href: introduction-bi.md
+    - name: "Using the Interface"
+      href: using-the-interface-bi.md
+    - name: "Quotes"
+      href: quotes-bi.md
+    - name: "Sales Orders"
+      href: sales-orders-bi.md
+    - name: "Production"
+      href: production-bi.md
+    - name: "Purchase Orders"
+      href: purchase-orders-bi.md
+    - name: "Inventory"
+      href: inventory-bi.md
+    - name: "Receiving"
+      href: receiving-bi.md
+    - name: "Shipping"
+      href: shipping-bi.md
+    - name: "Invoiced Sales"
+      href: invoiced-sales-bi.md

@@ -1,0 +1,28 @@
+<svg version="1.1"
+  width="1250" height="703.125"
+  viewBox="0 0 1250 703.125"
+  xmlns="http://www.w3.org/2000/svg" id="coverpage">
+  <style>
+    #coverpage {
+      max-height: 575px;
+      background-color: #313335;
+      background: 
+        url([%img=Resources/Images/skin-images/fruits-bag.png%]) bottom, 
+        url([%img=Resources/Images/skin-images/Multi-large-arrows.png%]) #3a3a3a;
+      background-size: 47.5% auto, auto 100%;
+      background-repeat: no-repeat;
+      background-position-x: right;
+      background-position-y: bottom, center;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+
+  <text x="33" y="327.5" fill="white" style="font-weight: bold; font-size: 36pt;">
+    Aptean Food and Beverage ERP
+  </text>
+  <!-- <text x="33" y="352.5" fill="white" style="font-size: 24pt;">JustFood Edition</text> -->
+  <text x="33" y="422.5" fill="white" style="font-size: 26pt;">[%=Aptean_Variables.DocumentName%]</text>
+  <!-- <text x="33" y="492.5" fill="white" style="font-size: 20.5pt;">August 2021</text> -->
+  <text x="33" y="622.5" fill="white" style="font-size: 23pt;">[%=Aptean_Variables.DocumentType%]</text>
+
+</svg>

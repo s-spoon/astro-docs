@@ -1,0 +1,544 @@
+- name: "Release Notes"
+  base: Release-Notes/
+  items:
+    - name: "11.9.2"
+      href: 11.9.2.md
+    - name: "11.9"
+      href: 11.9.md
+    - name: "11.8.1"
+      href: 11.8.1.md
+    - name: "11.8"
+      href: 11.8.md
+    - name: "11.7.2"
+      href: 11.7.2.md
+    - name: "11.7.1.1"
+      href: 11.7.1.1.md
+    - name: "11.7.1"
+      href: 11.7.1.md
+    - name: "11.7"
+      href: 11.7.md
+    - name: "11.6.2"
+      href: 11.6.2.md
+    - name: "11.6.1"
+      href: 11.6.1.md
+    - name: "11.6"
+      href: 11.6.md
+    - name: "11.5.1"
+      href: 11.5.1.md
+    - name: "11.5"
+      href: 11.5.md
+    - name: "11.4.2.1"
+      href: 11.4.2.1.md
+    - name: "11.4.2"
+      href: 11.4.2.md
+    - name: "11.4.1.1"
+      href: 11.4.1.1.md
+    - name: "11.4.1"
+      href: 11.4.1.md
+
+- name: "Getting Started"
+  base: Getting-started/
+  href: Getting-Started.md
+  items:
+    - name: "Login"
+      href: Login.md
+    - name: "Navigation"
+      href: Navigation.md
+    - name: "Dashboard"
+      href: Dashboard.md
+    - name: "Home Screen"
+      href: Home-Screen.md
+    - name: "Settings"
+      href: Settings.md
+
+- name: "Work Management"
+  base: Work-Management/
+  href: Work-Management.md
+  items:
+    - name: "Work Order Search"
+      href: Work-Order-Search.md
+      items:
+        - name: "Status Change and Approval"
+          href: Status-Change-and-Approval.md
+        - name: "Start Date and Assignment"
+          href: Start-Date-and-Assignment.md
+        - name: "Mass Update"
+          href: Mass-Update.md
+        - name: "Time Reporting"
+          href: Time-Reporting.md
+        - name: "New Task or Subtask"
+          href: New-Task-or-Subtask.md
+        - name: "Copy from Work Order"
+          href: Copy-from-Work-Order.md
+        - name: "Cost Posting"
+          href: Cost-Posting.md
+        - name: "Print"
+          href: Print.md
+        - name: "Activity Log"
+          href: Activity-Log.md
+        - name: "Issue Material"
+          href: Issue-Material.md
+        - name: "Comment"
+          href: Comment.md
+        - name: "Completion"
+          href: Completion.md
+        - name: "Inspection Completion"
+          href: Inspection-Completion.md
+        - name: "Follow-up Info"
+          href: Follow-up-Info.md
+    - name: "Work Order"
+      href: Work-Order.md
+      items:
+        - name: "Create Work Order"
+          href: Create-Work-Order.md
+        - name: "Create Quick WO"
+          href: Create-Quick-WO.md
+    - name: "Labor Activity Search"
+      href: Labor-Activity-Search.md
+
+- name: "Scheduling"
+  base: Scheduling/
+  href: Scheduling.md
+  items:
+    - name: "Employee Setup"
+      href: Employee-Setup.md
+    - name: "Craft Setup"
+      href: Craft-Setup.md
+    - name: "Manage Shifts"
+      href: Manage-Shifts.md
+    - name: "Schedule Work"
+      href: Schedule-Work.md
+    - name: "Publish"
+      href: Publish.md
+    - name: "Reports"
+      href: Reports.md
+    - name: "Glossary"
+      href: Glossary.md
+
+- name: "PM Schedule"
+  base: PM/
+  href: PM-Schedule.md
+  items:
+    - name: "PM Schedules Search"
+      href: PM-Schedules-Search.md
+    - name: "New Master Plan"
+      href: New-Master-Plan.md
+    - name: "Set PM Schedule"
+      href: Set-PM-Schedule.md
+    - name: "Forecast"
+      href: Forecast.md
+
+- name: "Requisition"
+  base: Requisition/
+  href: Requisition.md
+  items:
+    - name: "Using the Requisition Search"
+      href: Using-the-Requisition-Search.md
+    - name: "Requisition Line Details"
+      href: Requisition-Line-Details.md
+    - name: "Create New Requisition"
+      href: Create-New-Requisition.md
+    - name: "Reorder Report"
+      href: Reorder-Report.md
+    - name: "Approve/Review"
+      href: Approve-Review.md
+    - name: "Cancel Approval"
+      href: Cancel-Approval.md
+
+- name: "Equipment"
+  base: Equipment/
+  href: Equipment.md
+  items:
+    - name: "Using the Equipment Search"
+      href: Using-the-Equipment-Search.md
+    - name: "Using the Equipment Details"
+      href: Using-the-Equipment-Details.md
+    - name: "Create New Equipment"
+      href: Create-New-Equipment.md
+    - name: "Using the Serial Search"
+      href: Using-the-Serial-Search.md
+    - name: "Using the Serial Module"
+      href: Using-the-Serial-Module.md
+    - name: "Create New Serial"
+      href: Create-New-Serial.md
+    - name: "Hierarchy"
+      href: Hierarchy.md
+
+- name: "Inventory"
+  base: Inventory/
+  href: Inventory.md
+  items:
+    - name: "Using the Inventory Search"
+      href: Using-the-Inventory-Search.md
+    - name: "Using the Inventory Notebook"
+      href: Using-the-Inventory-Notebook.md
+      items:
+        - name: "Locations and Bins"
+          href: Locations-and-Bins.md
+    - name: "Create New Item"
+      href: Create-New-Item.md
+    - name: "Issue"
+      href: Issue.md
+    - name: "Return"
+      href: Return.md
+    - name: "Create Receipts"
+      href: Create-Receipts.md
+    - name: "Stores Activity"
+      href: Stores-Activity.md
+    - name: "Manage PickList"
+      href: Manage-PickList.md
+    - name: "Create PickList"
+      href: Create-PickList.md
+    - name: "Cycle Count"
+      href: Cycle-Count.md
+    - name: "Create Cycle Count"
+      href: Create-Cycle-Count.md
+    - name: "Repair Log"
+      href: Repair-Log.md
+    - name: "Shipping Order Search"
+      href: Shipping-Order-Search.md
+    - name: "Create Shipping Order"
+      href: Create-Shipping-Order.md
+- name: "Supplier"
+  base: Supplier/
+  href: Supplier.md
+  items:
+    - name: "Using the Supplier Search"
+      href: Using-the-Supplier-Search.md
+    - name: "Using the Supplier Notebook"
+      href: Using-the-Supplier-Notebook.md
+    - name: "Create New Supplier"
+      href: Create-New-Supplier.md
+
+- name: "Employees"
+  base: Employees/
+  href: Employees.md
+  items:
+    - name: "Using the Employees Search"
+      href: Using-the-Employees-Search.md
+    - name: "Using the Employee Module"
+      href: Using-the-Employee-Notebook.md
+    - name: "Labor Activity"
+      href: Labor-Activity.md
+    - name: "Create New Employee"
+      href: Create-New-Employee.md
+    - name: "Time Entry"
+      href: Time-Entry.md
+
+- name: "Purchasing"
+  base: Purchasing/
+  href: Purchasing.md
+  items:
+    - name: "Using Purchasing Search"
+      href: Using-Purchasing-Search.md
+    - name: "Using the Purchase Order Module"
+      href: Using-the-Purchase-Order-Module.md
+    - name: "Create a New Purchase Order"
+      href: Create-a-New-Purchase-Order.md
+    - name: "Using the PO Text Search"
+      href: Using-the-PO-Text-Search.md
+    - name: "Create a New PO Text"
+      href: Create-a-New-PO-Text.md
+    - name: "Change Order"
+      href: Change-Order.md
+    - name: "Blanket Order"
+      href: Blanket-Order.md
+    - name: "Service Contract Purchase Order"
+      href: Service-Contract-Purchase-Order.md
+    - name: "Release From Blanket Order"
+      href: Release-From-Blanket-Order.md
+    - name: "Protect Supplier on PO and Blanket Change Orders"
+      href: Protect-Supplier-on-PO-and-Blanket-Change-Orders.md
+    - name: "Auto Issue"
+      href: Auto-Issue.md
+    - name: "PO Receipts"
+      href: PO-Receipts.md
+    - name: "ECatalog Error"
+      href: ECatalog-Error.md
+    - name: "Printing Purchase Order"
+      href: Printing-Purchase-Order.md
+
+- name: "Buyers Backlog"
+  base: Buyers-Backlog/
+  href: Buyers-Backlog.md
+
+- name: "Events"
+  base: Events/
+  href: Events.md
+
+- name: "Setup"
+  base: Setup/
+  href: Setup.md
+  items:
+    - name: "Query Wizard"
+      href: Query-Wizard.md
+      items:
+        - name: "Creating Queries"
+          href: Creating-Queries.md
+        - name: "Editing Queries"
+          href: Editing-Queries.md
+        - name: "Defining Public Access"
+          href: Defining-Public-Access.md
+        - name: "Copying the Query"
+          href: Copying-the-Query.md
+        - name: "Sharing the Query"
+          href: Sharing-the-Query.md
+        - name: "Deleting the Query"
+          href: Deleting-the-Query.md
+        - name: "Security and Settings for Query Wizard"
+          href: Security-and-Settings-for-Query-Wizard.md
+    - name: "Language"
+      href: Language.md
+    - name: "Inspection Definition"
+      href: Inspection-Definition.md
+      items:
+        - name: "Inspection Results"
+          href: Inspection-Results.md
+    - name: "Cost Periods"
+      href: Cost-Periods.md
+    - name: "Field Mapping Setup"
+      href: Field-Mapping-Setup.md
+      items:
+        - name: "Security and Settings for Field Mapping Setup"
+          href: Security-and-Settings-for-Field-Mapping-Setup.md
+        - name: "Adding a New Relationship"
+          href: Adding-a-New-Relationship.md
+        - name: "Editing an Existing Relationship"
+          href: Editing-an-Existing-Relationship.md
+        - name: "Relation Window"
+          href: Relation-Window.md
+        - name: "Updating a Relationship"
+          href: Updating-a-Relationship.md
+        - name: "Deleting a Relationship"
+          href: Deleting-a-Relationship.md
+    - name: "Catalog Listing"
+      href: Catalog-Listing.md
+    - name: "Custom Elements"
+      href: Custom-Elements.md
+    - name: "Validation Codes"
+      href: Validation-Codes.md
+    - name: "Setup Options"
+      href: Setup-Options.md
+    - name: "Table Elements Settings"
+      href: Table-Elements-Settings.md
+
+- name: "Security"
+  base: Security/
+  href: Security.md
+  items:
+    - name: "Assign User Access"
+      href: Assign-User-Access.md
+    - name: "Licenses"
+      href: Licenses.md
+    - name: "Module Availability"
+      href: Module-Availability.md
+    - name: "Security Groups"
+      href: Security-Groups.md
+    - name: "Table Element Access Search"
+      href: Table-Element-Access-Search.md
+    - name: "Window Access Search"
+      href: Window-Access-Search.md
+    - name: "View Sessions"
+      href: View-Sessions.md
+
+- name: "Request For Quote"
+  base: Request-for-Quote/
+  href: Request-For-Quote.md
+  items:
+    - name: "Request For Quote Search"
+      href: Request-For-Quote-Search.md
+    - name: "Create RFQ"
+      href: Create-RFQ.md
+    - name: "RFQ Bid Evaluation"
+      href: RFQ-Bid-Evaluation.md
+
+- name: "Invoice"
+  base: Invoice/
+  href: Invoice.md
+  items:
+    - name: "Invoice Matching Search"
+      href: Invoice-Matching-Search.md
+    - name: "Create Voucher"
+      href: Create-Voucher.md
+    - name: "Show Voucher Error"
+      href: Show-Voucher-Error.md
+
+- name: "Integrations"
+  base: Integrations/
+  href: Integrations.md
+  items:
+    - name: "Integration File Status"
+      href: Integration-File-Status.md
+    - name: "View Error Records"
+      href: View-Error-Records.md
+
+- name: "Documents"
+  base: Documents/
+  href: Documents.md
+  items:
+    - name: "Documents Search"
+      href: Documents-Search.md
+      items:
+        - name: "Details"
+          href: Details.md
+        - name: "Grid-Operations.md"
+          href: Grid-Operations.md
+        - name: "Linked Equipment"
+          href: Linked-Equipment.md
+        - name: "Linked Serial"
+          href: Linked-Serial.md
+        - name: "Linked Items"
+          href: Linked-Items.md
+        - name: "Linked Work Order"
+          href: Linked-Work-Order.md
+        - name: "Linked Validation Code"
+          href: Linked-Validation-Codes.md
+        - name: "Activity Log"
+          href: Activity-Log.md
+
+- name: "Cloud Print"
+  base: Cloud-Print/
+  items:
+    - name: "Cloud Printing Account"
+      href: CP_IC_Cloud Printing Account.md
+    - name: "Configure Cloud Printing"
+      href: CP_IC_Configure Cloud Printing in.md
+    - name: "Installing and Activating"
+      href: CP_IC_Installing and Activating.md
+    - name: "Enable Cloud Printing in OneEAM"
+      href: CP_IC_Enable Cloud Printing in OneEAM.md
+    - name: "Setup-Cloud-Printing"
+      href: Setup-Cloud-Printing.md
+
+- name: "Microsoft Project Plan Interface"
+  base: MPP-Interface/
+  href: MPPI-Overview.md
+  items:
+    - name: "Installation"
+      href: MPPI-Installation.md
+    - name: "Introduction"
+      href: MPPI-Introduction.md
+    - name: "Create an Empty Project"
+      href: MPPI-Create-an-Empty-Project.md
+    - name: "Login"
+      href: MPPI-Login.md
+    - name: "Settings"
+      href: MPPI-Settings.md
+    - name: "ImportWO"
+      href: MPPI-ImportWO.md
+    - name: "Updating Work Orders"
+      href: MPPI-Updating-Work-Orders.md
+    - name: "Synchronizing Data"
+      href: MPPI-Synchronizing-Data.md
+    - name: "Appendix A: Template"
+      href: Appendix-A-Template.md
+    - name: "Appendix B: Configuration Options for Project"
+      href: Appendix-B-Configuration-Options-for-Project.md
+    - name: "Appendix C: Set Units as Decimals"
+      href: Appendix-C-Set-Units-as-Decimals.md
+    - name: "Appendix D Calendar Options"
+      href: Appendix-D-Calendar-Options.md
+
+- name: "Data Loader"
+  base: Data-Loader/
+  items:
+    - name: "Data Loader"
+      href: Data-Loader.md
+    - name: "Manipulating Data"
+      href: Manipulating-Data.md
+    - name: "Special Rules for Loading Data"
+      href: Special-Rules-for-Loading-Data.md
+
+- name: "KB Articles"
+  base: KB-Articles/
+  items:
+    - name: "Adding Planner or Supervisor"
+      href: Adding_Planner_or_Supervisor.md
+    - name: "Adding Work Requests"
+      href: Adding_Work_Requests.md
+    - name: "Approve Access to Aptean Support"
+      href: Approve_Access_to_Aptean_Support.md
+    - name: "Aptean Cloud Printing End User Setup Guide"
+      href: Aptean_Cloud_Printing_End_User_Setup_Guide.md
+    - name: "Aptean Cloud Printing Installation and Configuration Guide"
+      href: Aptean_Cloud_Printing_Installation_and_Configuration_Guide.md
+    - name: "Aptean EAM User Management"
+      href: Aptean_EAM_User_Management.md
+    - name: "Audit Tracking in Enterprise Asset Management"
+      href: Audit_Tracking_in_Enterprise_Asset_Management.md
+    - name: "Azure Storage Container Connection Guide"
+      href: Azure_Storage_Container_Connection_Guide.md
+    - name: "Azure Storage Container Setup Guide"
+      href: Azure Storage Container Setup Guide.md
+    - name: "CCA Codes behavior during WO completion"
+      href: CCA Codes behavior during WO completion.md
+    - name: "Cloud Printing Account Setup and Agent Configuration Guide - Internal Use Only"
+      href: Cloud Printing Account Setup and Agent Configuration Guide - Internal Use Only.md
+    - name: "Compatibility Requirements for EAM Mobile"
+      href: Compatibility Requirements for EAM Mobile.md
+    - name: "Data Translation Feature Applicability"
+      href: Data Translation Feature Applicability.md
+    - name: "Data Loader"
+      href: Data_Loader.md
+    - name: "Disabling DMS for a Plant"
+      href: Disabling DMS for a Plant.md
+    - name: "Document Provider Setup Guide"
+      href: Document Provider Setup Guide.md
+    - name: "Drop-down Configurations"
+      href: Drop-down Configurations.md
+    - name: "EAM Integration File Processing"
+      href: EAM_Integration_File_Processing.md
+    - name: "Enable Create and Complete button for Quick Work Order"
+      href: Enable_Create_and_Complete_button_for_Quick_Work_Order.md
+    - name: "Form configuration changes in the backend"
+      href: Form configuration changes in the backend.md
+    - name: "Label Printing Configuration and Instruction Guide"
+      href: Label Printing Configuration and Instruction Guide.md
+    - name: "List of Action Center tiles delivered out of box and its details"
+      href: List of Action Center tiles delivered out of box and its details.md
+    - name: "Microsoft Project Plan Interface"
+      href: Microsoft_Project_Plan_Interface.md
+    - name: "Mobile Apps Documentation"
+      href: Mobile Apps Documentation.md
+    - name: "Multi Warehousing Configuration for a Plant"
+      href: Multi-Warehousing_Configuration_for_a_Plant.md
+    - name: "Not getting desired output when the Not In operator is used in a query"
+      href: Not getting desired output when the Not In operator is used in a query.md
+    - name: "OneDrive Configuration and FAQ Guide"
+      href: OneDrive_Configuration_and_FAQ_Guide.md
+    - name: "Performing Inspection and Report Generation"
+      href: Performing_Inspection_and_Report_Generation.md
+    - name: "Print Labels Using BarTender"
+      href: Print Labels Using BarTender.md
+    - name: "Printing Work Order Linked Docs without View Privileges"
+      href: Printing Work Order Linked Docs without View Privileges.md
+    - name: "Reporting Database - Refresh Rate"
+      href: Reporting Database - Refresh Rate.md
+    - name: "Require Failure codes on Workorder completion"
+      href: Require Failure codes on Workorder completion.md
+    - name: "Resolving Active Session in Another WindowBrowserSystem Error"
+      href: Resolving Active Session in Another WindowBrowserSystem Error.md
+    - name: "Resolving Data Loader and Task Manager error while executing a job"
+      href: Resolving Data Loader and Task Manager error while executing a job.md
+    - name: "Resolving Error Message While Subscribing to Other User's Email Messages"
+      href: Resolving Error Message While Subscribing to Other User's Email Messages.md
+    - name: "Security action for documents across all Module"
+      href: Security action for documents across all Module.md
+    - name: "Session Timeout for EAM Mobile"
+      href: Session Timeout for EAM Mobile.md
+    - name: "Session Timeout"
+      href: Session Timeout.md
+    - name: "SSO Configuration For B2C"
+      href: SSO_Configuration_For_B2C.md
+    - name: "Task Management Integration Jobs"
+      href: Task Management Integration Jobs.md
+    - name: "Troubleshooting Cloud Print Issues"
+      href: Troubleshooting Cloud Print Issues.md
+    - name: "Troubleshooting Intermittent Missing of Work Order Edit Button"
+      href: Troubleshooting Intermittent Missing of Work Order Edit Button.md
+    - name: "Troubleshooting Query Issues in ApteanEAM"
+      href: Troubleshooting_Query_Issues_in_ApteanEAM.md
+    - name: "Understanding the Copy Functionality from Standard Request and Work Order in Detail"
+      href: Understanding the Copy Functionality from Standard Request and Work Order in Detail.md
+    - name: "Work Order Print Trouble Shooting"
+      href: Work Order Print Trouble Shooting.md

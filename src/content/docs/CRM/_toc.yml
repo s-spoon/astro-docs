@@ -1,0 +1,352 @@
+- name: Aptean CRM 10 documentation
+  href: contents.md
+
+- name: Aptean CRM Overview
+  href: Aptean-CRM-Overview.md
+
+- name: Getting Started
+  href: Getting-Started/contents.md
+  items:
+    - name: Navigation
+      href: Getting-Started/Navigation/contents.md
+      items:
+        - name: Role Based User Group Login
+          href: Getting-Started/Navigation/Role-Based-User-Group-Login.md
+        - name: Navigation Menu
+          href: Getting-Started/Navigation/Navigation-Menu/contents.md
+          items:
+            - name: New
+              href: Getting-Started/Navigation/Navigation-Menu/New.md
+            - name: Dashboards
+              href: Getting-Started/Navigation/Navigation-Menu/Dashboards.md
+            - name: Recents
+              href: Getting-Started/Navigation/Navigation-Menu/Recents.md
+            - name: Favorites
+              href: Getting-Started/Navigation/Navigation-Menu/Favorites.md
+            - name: Alerts
+              href: Getting-Started/Navigation/Navigation-Menu/Alerts.md
+            - name: Search
+              href: Getting-Started/Navigation/Navigation-Menu/Search.md
+        - name: CRM 10 UI Components
+          href: Getting-Started/Navigation/CRM-10-UI-Components/CRM-10-UI-components.md
+    - name: Main Entities
+      href: Getting-Started/Main-Entities/contents.md
+      items:
+        - name: Company
+          href: Getting-Started/Main-Entities/Company.md
+        - name: Contact
+          href: Getting-Started/Main-Entities/Contact.md
+        - name: Activity
+          href: Getting-Started/Main-Entities/Activity.md
+        - name: Opportunity
+          href: Getting-Started/Main-Entities/Opportunity.md
+    - name: Workspace
+      href: Getting-Started/Workspace/contents.md
+      items:
+        - name: Overview
+          href: Getting-Started/Workspace/Overview.md
+        - name: Daily Planner
+          href: Getting-Started/Workspace/Daily-Planner.md
+        - name: Workspace Dashboards
+          href: Getting-Started/Workspace/Workspace-Dashboards/contents.md
+          items:
+            - name: Calendar Dashboard
+              href: Getting-Started/Workspace/Workspace-Dashboards/Calendar-Dashboard.md
+            - name: Customer Service Dashboard
+              href: Getting-Started/Workspace/Workspace-Dashboards/Customer-Service-Dashboard.md
+            - name: Sales Dashboard
+              href: Getting-Started/Workspace/Workspace-Dashboards/Sales-Dashboard.md
+    - name: Searches
+      href: Getting-Started/Searches/contents.md
+      items:
+        - name: Global Search
+          href: Getting-Started/Searches/Global-Search.md
+        - name: New Search by Record Type
+          href: Getting-Started/Searches/New-Search-by-Record-Type/contents.md
+          items:
+            - name: Creating a Quick Search by Record Type
+              href: Getting-Started/Searches/New-Search-by-Record-Type/Creating-a-Quick-Search-by-Record-Type.md
+            - name: Creating an Advanced Search by Record Type
+              href: Getting-Started/Searches/New-Search-by-Record-Type/Creating-an-Advanced-Search-by-Record-Type.md
+            - name: Search Result
+              href: Getting-Started/Searches/New-Search-by-Record-Type/Search-Result.md
+        - name: Customized Search
+          href: Getting-Started/Searches/Customized-Search/contents.md
+          items:
+            - name: Adding fields to advanced search criteria
+              href: Getting-Started/Searches/Customized-Search/Adding-fields-to-advanced-search-criteria.md
+            - name: Saving a Customized Search
+              href: Getting-Started/Searches/Customized-Search/Saving-a-Customized-Search.md
+            - name: Create New Badge/Chart from Search
+              href: Getting-Started/Searches/Customized-Search/Create-New-BadgeChart-from-Search.md
+            - name: Filtering Search Data
+              href: Getting-Started/Searches/Customized-Search/Filtering-Search-Data.md
+    - name: Working with Dashboard Badges and Panels
+      href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/contents.md
+      items:
+        - name: Manage the Badge/Panels on Dashboard
+          href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/Manage-the-BadgePanels-on-Dashboard/contents.md
+          items:
+            - name: Add Badge/Panel to Dashboard
+              href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/Manage-the-BadgePanels-on-Dashboard/Add-BadgePanel-to-Dashboard.md
+            - name: Re-organize the Badge/Panel Positions
+              href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/Manage-the-BadgePanels-on-Dashboard/Reorganize-the-BadgePanel-Positions.md
+            - name: Delete Badge/Panel from Dashboard
+              href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/Manage-the-BadgePanels-on-Dashboard/Delete-BadgePanel-from-Dashboard.md
+            - name: Restore to Defaults
+              href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/Manage-the-BadgePanels-on-Dashboard/Restore-to-Defaults.md
+            - name: Filter Dashboard Data
+              href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/Manage-the-BadgePanels-on-Dashboard/Filter-Dashboard-Data.md
+        - name: Create a New Badge/Chart
+          href: Getting-Started/Working-with-Dashboard-Badges-and-Panels/Create-a-New-BadgeChart.md
+    - name: Outlook Add-In
+      href: Getting-Started/Outlook-AddIn/contents.md
+      items:
+        - name: Outlook Add-In Installation and Setup
+          href: Getting-Started/Outlook-AddIn/Outlook-AddIn-Installation-and-Setup.md
+        - name: Aptean CRM Add-in Menus
+          href: Getting-Started/Outlook-AddIn/Aptean-CRM-Addin-Menus/contents.md
+          items:
+            - name: Folder Selection
+              href: Getting-Started/Outlook-AddIn/Aptean-CRM-Addin-Menus/Folder-Selection.md
+        - name: Synchronization
+          href: Getting-Started/Outlook-AddIn/Synchronization/contents.md
+          items:
+            - name: Automatic Sync
+              href: Getting-Started/Outlook-AddIn/Synchronization/Automatic-Sync.md
+            - name: Bulk Export of Contacts from Outlook to Aptean CRM
+              href: Getting-Started/Outlook-AddIn/Synchronization/Bulk-Export-of-Contacts-from-Outlook-to-Aptean-CRM.md
+            - name: Bulk Export of Contacts from Aptean CRM to Outlook
+              href: Getting-Started/Outlook-AddIn/Synchronization/Bulk-Export-of-Contacts-from-Aptean-CRM-to-Outlook.md
+- name: Marketing
+  href: Marketing/contents.md
+  items:
+    - name: CRM Marketing Overview
+      href: Marketing/CRM-Marketing-Overview.md
+    - name: Marketing Dashboard
+      href: Marketing/Marketing-Dashboard.md
+    - name: Marketing Leads
+      href: Marketing/Marketing-Leads/contents.md
+      items:
+        - name: Suspect Lead vs Contact Lead
+          href: Marketing/Marketing-Leads/Suspect-Lead-vs-Contact-Lead.md
+        - name: Lead Main View Page
+          href: Marketing/Marketing-Leads/Lead-Main-View-Page.md
+        - name: Create a New Lead
+          href: Marketing/Marketing-Leads/Create-a-New-Lead.md
+        - name: Link Lead to Contact/Company
+          href: Marketing/Marketing-Leads/Link-Lead-to-ContactCompany.md
+        - name: Lead Scoring and Event Types
+          href: Marketing/Marketing-Leads/Lead-Scoring-and-Event-Types.md
+    - name: Marketing Visitors
+      href: Marketing/Marketing-Visitors/contents.md
+      items:
+        - name: Web Visitor Tracking
+          href: Marketing/Marketing-Visitors/Web-Visitor-Tracking.md
+        - name: Web Forms
+          href: Marketing/Marketing-Visitors/Web-Forms.md
+    - name: Marketing Campaigns
+      href: Marketing/Marketing-Campaigns/contents.md
+      items:
+        - name: Campaign Main View page
+          href: Marketing/Marketing-Campaigns/Campaign-Main-View-page.md
+        - name: Create a New Campaign
+          href: Marketing/Marketing-Campaigns/Create-a-New-Campaign.md
+        - name: Campaign Business Process Steps
+          href: Marketing/Marketing-Campaigns/Campaign-Business-Process-Steps.md
+    - name: Email Management
+      href: Marketing/Email-Management/contents.md
+      items:
+        - name: Email Designer
+          href: Marketing/Email-Management/Email-Designer.md
+        - name: Setting Up Your Company Defaults
+          href: Marketing/Email-Management/Setting-Up-Your-Company-Defaults.md
+        - name: Email Validation
+          href: Marketing/Email-Management/Email-Validation.md
+        - name: Batch Emails
+          href: Marketing/Email-Management/Batch-Emails.md
+    - name: Best Practices
+      href: Marketing/Best-Practices.md
+- name: Customer Service
+  href: Customer-Service/contents.md
+  items:
+    - name: Customer Service Overview
+      href: Customer-Service/Customer-Service-Overview.md
+    - name: Customer Service Dashboard
+      href: Customer-Service/Customer-Service-Dashboard.md
+    - name: Cases
+      href: Customer-Service/Cases/contents.md
+      items:
+        - name: Case Main View Interface
+          href: Customer-Service/Cases/Case-Main-View-Interface.md
+        - name: Case Options
+          href: Customer-Service/Cases/Case-Options.md
+        - name: Create a New Case
+          href: Customer-Service/Cases/Create-a-New-Case.md
+        - name: Add Activity to a Case
+          href: Customer-Service/Cases/Add-Activity-to-a-Case.md
+        - name: Link Articles to a Case
+          href: Customer-Service/Cases/Link-Articles-to-a-Case.md
+        - name: Link Change Request to a Case
+          href: Customer-Service/Cases/Link-Change-Request-to-a-Case.md
+        - name: Close a Case
+          href: Customer-Service/Cases/Close-a-Case.md
+        - name: Best Practice
+          href: Customer-Service/Cases/Best-Practice/contents.md
+    - name: Change Requests
+      href: Customer-Service/Change-Requests/contents.md
+      items:
+        - name: Change Requests Main View Interface
+          href: Customer-Service/Change-Requests/Change-Requests-Main-View-Interface.md
+        - name: Change Request Options
+          href: Customer-Service/Change-Requests/Change-Request-Options.md
+        - name: Create a New Change Request
+          href: Customer-Service/Change-Requests/Create-a-New-Change-Request.md
+        - name: Link Change Request to Case
+          href: Customer-Service/Change-Requests/Link-Change-Request-to-Case.md
+    - name: Knowledge
+      href: Customer-Service/Knowledge/contents.md
+      items:
+        - name: Knowledge Base Overview
+          href: Customer-Service/Knowledge/Knowledge-Base-Overview.md
+        - name: Knowledge Articles
+          href: Customer-Service/Knowledge/Knowledge-Articles.md
+        - name: Knowledge Main View
+          href: Customer-Service/Knowledge/Knowledge-Main-View.md
+        - name: Article Options
+          href: Customer-Service/Knowledge/Article-Options.md
+        - name: New Article
+          href: Customer-Service/Knowledge/New-Article.md
+        - name: Search for Articles
+          href: Customer-Service/Knowledge/Search-for-Articles.md
+        - name: Link Knowledge to Case
+          href: Customer-Service/Knowledge/Link-Knowledge-to-Case.md
+    - name: Customer Portal
+      href: Customer-Service/Customer-Portal/contents.md
+      items:
+        - name: Portal Setup and URL
+          href: Customer-Service/Customer-Portal/Portal-Setup-and-URL.md
+        - name: Portal User Register
+          href: Customer-Service/Customer-Portal/Portal-User-Register/contents.md
+          items:
+            - name: Portal Request
+              href: Customer-Service/Customer-Portal/Portal-User-Register/Portal-Request.md
+            - name: Customer Portal Invite Email
+              href: Customer-Service/Customer-Portal/Portal-User-Register/Customer-Portal-Invite-Email.md
+        - name: Customer Portal Dashboard
+          href: Customer-Service/Customer-Portal/Customer-Portal-Dashboard.md
+        - name: Report Case
+          href: Customer-Service/Customer-Portal/Report-Case.md
+        - name: Send Message
+          href: Customer-Service/Customer-Portal/Send-Message.md
+        - name: Search for Knowledge Article
+          href: Customer-Service/Customer-Portal/Search-for-Knowledge-Article.md
+        - name: Close Case
+          href: Customer-Service/Customer-Portal/Close-Case.md
+
+- name: Import & Export Data
+  href: Import-&-Export-Data/contents.md
+  items:
+    - name: CRM Import Data
+      href: Import-&-Export-Data/CRM-Import-Data/contents.md
+      items:
+        - name: Import Setup
+          href: Import-&-Export-Data/CRM-Import-Data/Import-Setup.md
+        - name: Formatting your Data in the Excel Template
+          href: Import-&-Export-Data/CRM-Import-Data/Formatting-your-Data-in-the-Excel-Template.md
+        - name: Running the Import
+          href: Import-&-Export-Data/CRM-Import-Data/Running-the-Import.md
+    - name: CRM Export Data
+      href: Import-&-Export-Data/CRM-Export-Data.md
+
+- name: Reports
+  href: Reports/contents.md
+  items:
+    - name: CRM Reports Overview
+      href: Reports/CRM-Reports-Overview.md
+    - name: Report Template
+      href: Reports/Report-Template/contents.md
+      items:
+        - name: Activity History
+          href: Reports/Report-Template/Activity-History.md
+        - name: Company Detail
+          href: Reports/Report-Template/Company-Detail.md
+        - name: Company with Phone and Address
+          href: Reports/Report-Template/Company-with-Phone-and-Address.md
+        - name: Contact Activity History
+          href: Reports/Report-Template/Contact-Activity-History.md
+        - name: Contact Phone Book
+          href: Reports/Report-Template/Contact-Phone-Book.md
+        - name: Case Company Detail
+          href: Reports/Report-Template/Case-Company-Detail.md
+        - name: Case Detail
+          href: Reports/Report-Template/Case-Detail.md
+        - name: Forecast Summary
+          href: Reports/Report-Template/Forecast-Summary.md
+        - name: Opportunity Activity History
+          href: Reports/Report-Template/Opportunity-Activity-History.md
+        - name: Opportunity Detail
+          href: Reports/Report-Template/Opportunity-Detail.md
+        - name: Opportunity Summary
+          href: Reports/Report-Template/Opportunity-Summary.md
+        - name: Change Request Detail
+          href: Reports/Report-Template/Change-Request-Detail.md
+    - name: Run Report
+      href: Reports/Run-Report.md
+- name: ERP Integration
+  href: ERP-Integration/contents.md
+  items:
+    - name: Overview
+      href: ERP-Integration/Overview.md
+    - name: Getting Started
+      href: ERP-Integration/Getting-Started/contents.md
+      items:
+        - name: Initial Integration Setup
+          href: ERP-Integration/Getting-Started/Initial-Integration-Setup.md
+        - name: Turn on ERP Integration
+          href: ERP-Integration/Getting-Started/Turn-on-ERP-Integration.md
+        - name: User Setup
+          href: ERP-Integration/Getting-Started/User-Setup.md
+        - name: Sync Config Rules
+          href: ERP-Integration/Getting-Started/Sync-Config-Rules.md
+        - name: Import ERP Customers
+          href: ERP-Integration/Getting-Started/Import-ERP-Customers.md
+        - name: ERP Import Audit
+          href: ERP-Integration/Getting-Started/ERP-Import-Audit.md
+        - name: ERP Notifications (Claim Store
+          href: ERP-Integration/Getting-Started/ERP-Notifications-(Claim-Store).md
+    - name: Integration Points
+      href: ERP-Integration/Integration-Points/contents.md
+      items:
+        - name: Customer Management
+          href: ERP-Integration/Integration-Points/Customer-Management.md
+        - name: Turn on ERP Integration
+          href: ERP-Integration/Integration-Points/Quotation.md
+        - name: Sales History
+          href: ERP-Integration/Integration-Points/Sales-History.md
+- name: Setup
+  href: Setup/contents.md
+  items:
+    - name: Business Processes
+      href: Setup/Business-Processes/contents.md
+      items:
+        - name: Business Process Steps
+          href: Setup/Business-Processes/Business-Process-Steps.md
+        - name: Managing Business Process Targets
+          href: Setup/Business-Processes/Managing-Business-Process-Targets.md
+        - name: Create a New Business Process
+          href: Setup/Business-Processes/Create-a-New-Business-Process.md
+    - name: Activity
+      href: Setup/Activity.md
+    - name: Localization
+      href: Setup/Localization.md
+    - name: Deduplication
+      href: Setup/Deduplication.md
+    - name: Mail Merge
+      href: Setup/Mail-Merge.md
+    - name: Tags
+      href: Setup/Tags.md
+    - name: Users
+      href: Setup/Users.md
+    - name: Groups
+      href: Setup/Groups.md

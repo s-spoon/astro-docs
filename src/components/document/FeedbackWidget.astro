@@ -1,0 +1,82 @@
+---
+import { MessageCircleMore, ThumbsDown, ThumbsUp, X } from "lucide-svelte"
+import { db } from "astro:db";
+import { Feedback } from 'astro:db';
+
+const { slug } = Astro.props;
+
+if (Astro.request.method === 'POST'){
+  const formData = await Astro.request.formData();
+  console.log('Adding feedback', formData.entries());
+
+  await db.insert(Feedback).values({
+    email: formData.get('email')! as string,
+    content: formData.get('content')! as string,
+    rating: Number(formData.get('rating')),
+    slug: formData.get('slug')! as string,
+  })
+}
+
+---
+<button id="feedback-btn" class="self-end text-white bg-aptean-coral border border-orange-700 rounded-md px-4 py-2 flex items-center gap-1">
+  <MessageCircleMore class="inline-block w-6 h-6"/>
+  Feedback
+</button>
+
+<dialog class=" bg-white relative rounded-lg shadow-md h-96 w-[22rem] not-prose [&[open]]:grid grid-rows-[2.5rem_1fr] grid-cols-[1fr_auto] border border-aptean-dark mr-6 mb-28">
+  <h2 class="pl-4 self-center text-sm">Was this page helpful?</h2>
+  <div class="flex p-2 gap-0.5 items-center">
+    <button onclick="changeRating(1, this)" class={`bg-white text-green-700 [&.selected]:text-white [&.selected]:bg-green-700 text-sm pl-2 pr-3 rounded-l-lg flex items-center gap-2 hover:bg-green-600 hover:text-white border border-green-700`}>
+      <ThumbsUp class="inline-block w-3 h-4"/>
+      Yes
+    </button>
+    <button onclick="changeRating(0, this)" class={`bg-white text-red-700 [&.selected]:text-white [&.selected]:bg-red-700 pl-2 pr-3 text-sm rounded-r-lg flex items-center gap-2 hover:bg-red-600 hover:text-white border border-red-700`}>
+      <ThumbsDown class="inline-block w-3 h-4"/>
+      No
+    </button>
+    <button onclick="document.querySelector('dialog').close()" class={`text-red-700 px-2 rounded-lg flex items-center gap-2`}>
+      <X class="inline-block w-5 h-5"/>
+    </button>
+  </div>
+  <form method="POST" class="border-t border-aptean-dark col-span-full grid relative" data-astro-reload>
+    <input type="hidden" name="slug" value={slug} />
+    <input type="hidden" name="rating" value="0" />
+    <textarea required name="content" oninput="this.nextElementSibling.classList[this.value.length > 0 ? 'add' : 'remove']('hidden')" class="resize-none outline-none bg-slate-50 p-4 text-sm"></textarea>
+    <p class="text-sm absolute top-4 left-4 text-neutral-500">Feel free to share any additional feedback.</p>
+    <input required type="email" name="email" placeholder="Enter your email" class="absolute bottom-2 left-2 rounded-md border border-aptean-dark px-2 py-1 text-sm"/>
+    <button type="submit" class={`text-sm bg-sky-700 text-white absolute bottom-2 right-2 px-4 py-1.5 rounded-lg flex items-center gap-2`}>
+      Submit
+    </button>
+  </form>
+</dialog>
+
+<script>
+  const toggleModal = function () {
+    const dialogBox = document.querySelector('dialog')!;
+    dialogBox.showModal();
+  }
+
+  document.addEventListener('astro:page-load', function(){
+    const feedbackBtn = document.querySelector('#feedback-btn')!;
+
+    feedbackBtn.removeEventListener('click', toggleModal);
+    feedbackBtn.addEventListener('click', toggleModal);
+
+    document.querySelector('dialog')!.addEventListener('click', function (e){
+      const dialogBoxElements = [...this.querySelectorAll("*")];
+      const isOutside = !dialogBoxElements.includes(e.target as Element);
+      console.log({ dialogBoxElements, target: e.target, isOutside });
+      
+      if (isOutside) this.close();
+    })
+  })
+
+  function changeRating(rating: number, button: HTMLElement){
+    const ratingInput = document.querySelector('input[name=rating]') as HTMLInputElement;
+    ratingInput.value = rating.toString();
+
+    document.querySelectorAll('dialog button').forEach(e => e.classList.remove('selected'));
+    button.classList.add('selected');
+  }
+  Object.assign(window, { changeRating });
+</script>

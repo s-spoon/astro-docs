@@ -1,0 +1,98 @@
+---
+import Site from "@/layouts/Site.astro"
+import { tw } from "@/tw"
+import { fade } from "astro:transitions"
+
+const docStyle = tw`
+  prose
+  row-span-4
+
+  prose-code:[overflow-wrap:anywhere]
+  prose-neutral
+  
+  prose-table:border-[1.5px] 
+  prose-table:bg-gray-100 
+  prose-table:border-[#3a3a3a]
+  prose-table:rounded-lg
+  
+  prose-img:border
+  prose-img:cursor-zoom-in
+  prose-img:rounded-lg
+  prose-img:border-gray-300
+  prose-img:bg-gray-100
+  prose-img:max-w-96
+  prose-img:inline-block 
+  prose-img:m-0 
+  prose-img:my-3
+  prose-img:mr-1
+  prose-img:transition-all
+  prose-img:duration-500
+
+  [&_img.active]:max-w-full
+  [&_img.active]:cursor-zoom-out
+  
+  [&_ul>li>ul]:list-[circle]
+  [&_ul>li>ul>li>ul]:list-[square]
+  [&_ol>li>ol]:list-[lower-alpha]
+  [&_ol>li>ol>li>ol]:list-[lower-roman]
+  [&_li_>_p]:my-0.5
+  
+  prose-th:min-w-auto 
+  prose-table:overflow-x-scroll
+  [&_sup_>_a]:text-blue-500
+  prose-table:w-auto
+  prose-td:border-[1.5px]
+  prose-td:border-aptean-dark
+  prose-td:border-l-0
+  [&_th:last-of-type]:border-r-0
+  [&_td:last-of-type]:border-r-0
+  prose-td:border-b-0
+  prose-th:font-normal 
+  prose-th:text-[1.1em]
+  prose-th:tracking-normal
+  prose-th:text-white
+  prose-table:border-spacing-0
+  prose-table:border-separate
+  prose-table:text-sm
+  prose-table:md:text-base
+  prose-th:border-[1.5px]
+  prose-th:border-aptean-dark
+  prose-thead:bg-aptean-dark
+  prose-th:border-r-white
+  prose-td:p-2 
+  prose-th:p-2
+  
+  prose-headings:font-medium 
+  prose-h1:mt-0
+  prose-headings:my-5
+  
+  text-black
+  text-sm
+  md:text-base
+  leading-relaxed
+  p-6 pl-8 
+  max-w-none
+  
+  prose-headings:pt-4
+  prose-h1:pt-0
+
+  [&:after]:p-4
+  [&:after]:[content:'']
+`
+---
+
+<Site title="Copyright and Trademarks" class="grid grid-rows-1 grid-cols-[auto_1fr_auto] overflow-y-auto overflow-x-hidden relative">
+<article class={docStyle} transition:animate={fade({ duration: '0.4s' })}>
+  <h1>Copyright and Trademarks</h1>
+  <p>Last updated: September 2024</p>
+
+  <p>Copyright © 2024 Aptean, Inc. All Rights Reserved. These materials are provided by Aptean for informational purposes only, without representation or warranty of any kind, and Aptean shall not be liable for errors or omissions with respect to the materials. The only warranties for Aptean products and services are those set forth in the express warranty statements accompanying such products and services, if any, and nothing herein shall be construed as constituting an additional warranty. No part of this publication may be reproduced or transmitted in any form or for any purpose without the express written permission of Aptean. The information contained herein may be changed without prior notice. Some products marketed by Aptean contain proprietary software components of other software vendors. Aptean and other Aptean products and services referenced herein as well as their respective logos are registered trademarks or trademarks of Aptean or its affiliated companies.</p>
+
+  <p>
+    Office <br/>
+    4325 Alexander Drive, Suite 100, Alpharetta, GA 30022-3740 <br/>
+    Ph no. - <a href="tel:+1 8854112783">+1 885-411-2783</a><br/>
+    Email - <a href="mailto:info@aptean.com">info@aptean.com</a>
+  </p>
+</article>
+</Site>

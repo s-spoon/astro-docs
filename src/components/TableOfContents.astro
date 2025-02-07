@@ -1,0 +1,50 @@
+---
+import AnimatedEntry from "@/components/table-of-contents/AnimatedEntry.svelte";
+import { getApp } from "@/pages/[appName]/_getApp";
+import getTOC from "@/TOC";
+import { ExternalLink, SearchSlash } from "lucide-svelte";
+
+interface Props {
+  appName: string
+}
+
+const { appName } = Astro.props;
+
+const appShort = await getApp(appName).then(a => a.short);
+const ymlTOC = await getTOC(appShort);
+
+const remappedTOC = ymlTOC.map(function setActive(entry){
+  
+  let active = false;
+  if (entry.href)
+  active = Astro.url.pathname.toLowerCase().includes(entry.href.toLowerCase());
+  
+  if (entry.items)
+    entry.items = entry.items.map(setActive)
+
+  return {...entry, active};
+})
+---
+
+<nav class="p-2 pr-0 grid grid-rows-[auto_1fr_auto] gap-1 grid-cols-1 h-full">
+  <label class="bg-aptean-dark text-white flex rounded-lg mb-2 mr-2">
+    <SearchSlash class="w-12 p-1 md:p-0 self-center"/>
+    <input type="search" class="rounded-r-lg w-full text-black py-1.5" oninput="dispatchSearch(this)" />
+  </label>
+  <div class="overflow-y-auto pr-2">
+    {remappedTOC.map((entry) => <AnimatedEntry client:load {appName} {...entry} />)}
+  </div>
+  <a href={`${import.meta.env.BASE_URL}search/?app=${appName}`} class="flex items-center justify-center gap-2 bg-neutral-100 py-2 px-3 mt-1 mr-2 rounded-md">
+    Search this module <ExternalLink class="w-5 h-5 inline-block" />
+  </a>
+</nav>
+
+<script>
+  function dispatchSearch(el: HTMLInputElement){
+    const event = new CustomEvent('toc-search', {
+      detail: el.value
+    })
+    window.dispatchEvent(event);
+  }
+  Object.assign(window, { dispatchSearch });
+</script>

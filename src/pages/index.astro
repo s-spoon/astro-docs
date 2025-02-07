@@ -1,0 +1,42 @@
+---
+import Site from "@/layouts/Site.astro";
+import View from "@/components/home/View.svelte";
+import { db } from "astro:db";
+import { AppMapping } from "astro:db";
+import { getApp } from "@/pages/[appName]/_getApp";
+import getTOC, { type TOCEntry } from "@/TOC";
+
+const appMapping = await db.select().from(AppMapping);
+
+const remappedTOCList = await Promise.all(
+  appMapping.map(async (appName) => {
+    try {
+      const appShort = await getApp(appName.short!).then((a) => a.short);
+      const appLong = await getApp(appName.short!).then((a) => a.long);
+      const ymlTOC = await getTOC(appShort);
+      const remappedTOC = ymlTOC.map(function setActive(entry) {
+        let active = false;
+        if (entry.href) active = Astro.url.pathname.toLowerCase().includes(entry.href.toLowerCase());
+
+        if (entry.items) entry.items = entry.items.map(setActive);
+
+        return { ...entry, active };
+      });
+
+      return { appLong, remappedTOC };
+    } catch (error) {
+      console.error(`App not found: ${appName.short}`, error);
+      return undefined;
+    }
+  })
+);
+---
+
+<Site class="overflow-hidden flex flex-col">
+  <header class="py-4 bg-aptean-dark mx-8 mt-8">
+    <h2 class="font-semibold text-3xl text-white pl-2">Product Documentation</h2>
+  </header>
+  <div class="overflow-auto">
+    <View baseURI={import.meta.env.BASE_URL} client:only="svelte" remappedTOCList={remappedTOCList} />
+  </div>
+</Site>

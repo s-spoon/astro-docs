@@ -1,0 +1,44 @@
+- name: "EDI Portal"
+  href: edi-portal.md
+  items:
+    - name: "Action Menu"
+      href: action-menu.md
+    - name: "Dashboard"
+      href: dashboard.md
+    - name: "Trading Partners"
+      href: trading-partners.md
+    - name: "Exceptions"
+      href: exceptions.md
+    - name: "Transaction Search"
+      href: transaction-search.md
+    - name: "Core Transactions"
+      href: core-transactions.md
+      items:
+        - name: "Purchase Orders"
+          href: purchase-orders.md
+        - name: "Invoices"
+          href: invoices.md
+        - name: "Shipments"
+          href: shipments.md
+        - name: "Acknowledgments"
+          href: acknowledgments.md
+    - name: "3PL Transactions"
+      href: 3pl-transactions.md
+      items:
+        - name: "Warehouse Shipping Order"
+          href: warehouse-shipping-order.md
+        - name: "Warehouse Shipping Advice"
+          href: warehouse-shipping-advice.md
+        - name: "Warehouse Inventory Adjustment Advice"
+          href: warehouse-inventory-adjustment-advice.md
+        - name: "Stock Transfer"
+          href: stock-transfer.md
+        - name: "Stock Receipt"
+          href: stock-receipt.md
+    - name: "Notification Recipients"
+      href: notification-recipients.md
+    - name: "Transaction Notifications"
+      href: transaction-notifications.md
+      items:
+        - name: "Transaction Actions"
+          href: transaction-actions.md

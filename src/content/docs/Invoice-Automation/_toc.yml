@@ -1,0 +1,116 @@
+- name: "Home"
+  href: contents.md
+- name: "Features"
+  items:
+    - name: "Document List View"
+      items:
+        - name: "Index"
+          href: features/document-list-view/contents.md
+        - name: "Filtering"
+          href: features/document-list-view/filtering.md
+        - name: "Searching"
+          href: features/document-list-view/searching.md
+        - name: "Grid/Table View"
+          href: features/document-list-view/grid-table-layout.md
+        - name: "Automatic Refreshing"
+          href: features/document-list-view/automatic-refreshing.md
+        - name: "Actions Menu"
+          href: features/document-list-view/actions-menu.md
+    - name: "Document View"
+      items:
+        - name: "Index"
+          href: features/document-view/contents.md
+        - name: "Tags"
+          href: features/document-view/tags.md
+        - name: "Document Viewer"
+          href: features/document-view/document-viewer.md
+        - name: "Fields"
+          href: features/document-view/fields.md
+        - name: "Line Matching Dialog"
+          href: features/document-view/line-matching-dialog.md
+        - name: "Source File Popup"
+          href: features/document-view/source-file-popup.md
+        - name: "Actions Menu"
+          href: features/document-view/actions-menu.md
+    - name: "Template Editor"
+      items:
+        - name: "Index"
+          href: features/template-editor/contents.md
+        - name: "Document Viewer"
+          href: features/template-editor/document-viewer.md
+        - name: "Template Options"
+          href: features/template-editor/template-options.md
+        - name: "Exclusions"
+          href: features/template-editor/exclusions.md
+        - name: "Fields"
+          href: features/template-editor/fields.md
+        - name: "Populating Fields"
+          href: features/template-editor/populating-fields.md
+        - name: "Anchors"
+          href: features/template-editor/anchors.md
+        - name: "Multi-page Bounds"
+          href: features/template-editor/multi-page-bounds.md
+        - name: "Source File Popup"
+          href: features/template-editor/source-file-popup.md
+    - name: "Automatic Templating"
+      href: features/automatic-templating.md
+    - name: "Document Uploading"
+      href: features/document-uploading.md
+    - name: "Document Statuses"
+      href: features/document-status.md
+    - name: "Document Validation Errors"
+      href: features/document-validation-errors.md
+    - name: "Settings"
+      items:
+        - name: "Index"
+          href: features/settings/contents.md
+        - name: "General Settings"
+          href: features/settings/general.md
+        - name: "Connected ERP Data"
+          items:
+            - name: "Index"
+              href: features/settings/connected-erp-data/contents.md
+            - name: "Companies"
+              href: features/settings/connected-erp-data/company.md
+            - name: "Suppliers"
+              href: features/settings/connected-erp-data/supplier.md
+        - name: "User"
+          href: features/settings/user-profile.md
+        - name: "Workflows"
+          items:
+            - name: "Index"
+              href: features/settings/workflows/contents.md
+            - name: "User Groups"
+              href: features/settings/workflows/user-groups.md
+            - name: "Assignees"
+              href: features/settings/workflows/assignees.md
+            - name: "Approvals"
+              href: features/settings/workflows/approvals.md
+            - name: "Todo List View"
+              href: features/settings/workflows/todo-list.md
+- name: "Guides"
+  items:
+    - name: "Simple Purchase Invoice"
+      href: guides/purchase-invoice.md
+    - name: "Exclusions"
+      href: guides/exclusions.md
+    - name: "Anchors"
+      href: guides/anchors.md
+    - name: "Advanced Table Options"
+      href: guides/advanced-tables.md
+    - name: "Workflow Approvals"
+      href: guides/workflow-approvals.md
+- name: "ERP Integrations"
+  items:
+    - name: "Made2Manage"
+      items:
+        - name: "Purchase Order to Invoice Outline"
+          href: external-erp/m2m/po-to-invoice-outline.md
+        - name: "Required Settings & Tips"
+          href: external-erp/m2m/required-settings.md
+- name: "FAQ"
+  href: faq.md
+- name: "Glossary"
+  href: glossary.md
+- name: "Feedback"
+  href: feedback.md

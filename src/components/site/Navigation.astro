@@ -1,0 +1,29 @@
+---
+interface Props {
+  class?: string;
+  title?: string
+}
+
+const addtl = Astro.props['class'] || '';
+const title = Astro.props['title'];
+
+---
+
+<div>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>   
+</div>
+
+<script>
+  const siteSidebar = document.querySelector('#site-sidebar') as HTMLElement;
+  const openSidebar = document.querySelector('#open-sidebar') as HTMLButtonElement;
+  const closeSidebar = document.querySelector('#close-sidebar') as HTMLButtonElement;
+
+  openSidebar.addEventListener('click', function(){
+    siteSidebar.classList.add("!grid");
+  })
+  closeSidebar.addEventListener('click', function(){
+    siteSidebar.classList.remove("!grid");
+  })
+</script>

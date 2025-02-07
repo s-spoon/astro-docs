@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'SuisseIntl';
+    src: url('SuisseIntl-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SuisseIntl';
+    src: url('./SuisseIntl-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SuisseIntlBook';
+    src: url('SuisseIntl-Book.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SuisseIntlBook';
+    src: url('SuisseIntl-BookItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SuisseIntlCond';
+    src: url('SuisseIntlCond-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SuisseIntlCond';
+    src: url('SuisseIntlCond-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SuisseIntlCond';
+    src: url('SuisseIntlCond-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SuisseIntlCond';
+    src: url('SuisseIntlCond-RegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}

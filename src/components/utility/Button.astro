@@ -1,0 +1,12 @@
+---
+interface Props {
+  active: string,
+  inactive: string
+}
+
+const { active, inactive } = Astro.props;
+---
+
+<button class={`px-3 font-semibold border-2 border-transparent ${inactive} ${active}`}>
+  <slot />
+</button>

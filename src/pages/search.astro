@@ -1,0 +1,15 @@
+---
+import Site from "@/layouts/Site.astro";
+import InstantSearch from "@/components/search/Search.svelte";
+import { db } from "astro:db";
+import { AppMapping } from "astro:db";
+
+const searchKEY: string = (import.meta.env.SEARCH_KEY || process.env['SEARCH_KEY']) ?? "";
+const searchHOST: string = import.meta.env.PROD ? import.meta.env.SITE + 'appcentral-meilisearch/' : 'http://localhost:7700/';
+
+const appMapping = await db.select().from(AppMapping);
+---
+
+<Site class="p-6 overflow-auto grid grid-rows-[auto_1fr_auto] grid-cols-[1fr_auto] gap-4">
+  <InstantSearch client:only="svelte" searchAPI_KEY={searchKEY} {searchHOST} {appMapping}></InstantSearch>
+</Site>

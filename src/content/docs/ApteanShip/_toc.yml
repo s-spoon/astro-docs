@@ -1,0 +1,925 @@
+
+- name: "Aptean Ship"
+  href: aptean-ship.md
+  items:
+    - name: "Aptean Ship Connector"
+      href: aptean-ship-connector.md
+      items:
+      - name: "Aptean Ship System Requirements"
+        href: aptean-ship-system-requirements.md
+      - name: "Aptean Ship Connector Installation"
+        href: aptean-ship-connector-installation.md
+      - name: "Aptean Ship Connector Configuration"
+        href: aptean-ship-connector-configure.md
+    - name: "Subscription Management System (SMS)"
+      href: sms.md 
+      items:
+      - name: "Users and Roles"
+        href: users-roles.md
+      - name: "Adding Options in the SMS"
+        href: adding-options-in-the-sms.md
+      - name: "Data Replication"
+        href: data-replication.md
+    - name: "General"
+      href: general.md 
+      items:  
+      - name: "Logging in to Aptean Ship"
+        href: logging-in-to-aptean-ship.md
+      - name: "Toggle the Side Menu"
+        href: toggle-the-side-menu.md 
+      - name: "Setup Overview"
+        href: setup-overview.md  
+      - name: "Shipment Defaults"
+        href: shipment-defaults.md 
+    - name: "How To"
+      href: how-to.md 
+      items:  
+      - name: "International"
+        href: international.md
+        items:
+        - name: "International Setup Overview"
+          href: international-setup-overview.md
+        - name: "Set Up Line Items"
+          href: set-up-line-items.md  
+        - name: "International Documents"
+          href: international-documents.md
+        - name: "Paperless Trade Documents"
+          href: paperless-trade-documents.md
+        - name: "Required International Fields"
+          href: required-international-fields.md
+        - name: "Process an International Shipment"
+          href: process-an-international-shipment.md
+        - name: "Commercial Invoice"
+          href: commercial-invoice.md
+        - name: "Certification of Origin"
+          href: certification-of-origin.md
+        - name: "Terms of Sale"
+          href: terms-of-sale.md
+      - name: "Printing"
+        href: printing.md
+        items:
+        - name: "Reprint Labels or Shipment Documents for Processed Shipments"
+          href: reprint-labels-shipment-documents-for-processed-shipments.md
+        - name: "Auto-Print Labels and Documents"
+          href: autoprint-labels-and-documents.md
+      - name: "Hazardous Materials and Dangerous Goods"
+        href: hazardous-materials-dangerous-goods.md
+        items:
+        - name: "Hazardous Materials Setup"
+          href: hazardous-materials-setup.md
+        - name: "Enable HazMat or DG Documents"
+          href: enable-hazmatdg-documents.md
+        - name: "UPS Hazardous Materials Shipments"
+          href: ups-hazardous-materials-shipments.md
+        - name: "FedEx Dangerous Goods or Hazardous Materials Shipments"
+          href: fedex-dangerous-goods-hazardous-materials-shipments.md
+        - name: "Process a Hazardous Materials or Dangerous Goods Shipment"
+          href: process-a-hazardous-materials-or-dangerous-goods-shipment.md
+    - name: "Automate Ship Via Translations"
+      href: automate-ship-via-translations.md
+    - name: "Company"
+      href: company.md 
+      items:  
+      - name: "Company Setup"
+        href: company-setup.md
+      - name: "Add Your Company Logo"
+        href: add-your-company-logo.md
+      - name: "Registration"
+        href: registration.md 
+      - name: "User Profiles"
+        href: user-profiles.md
+    - name: "Preferences"
+      href: preferences.md
+      items:
+      - name: "General Preferences"
+        href: general-preferences.md  
+      - name: "Data Management Preferences" 
+        href: data-management-preferences.md
+      - name: "Address Validation Preferences"
+        href: address-validation-preferences.md
+      - name: "Hazardous Materials Preferences"
+        href: hazardous-materials-preferences.md
+      - name: "International Preferences"
+        href: international-preferences.md 
+      - name: "Rate Quote Preferences"
+        href: rate-quote-preferences.md
+    - name: "User Definable Fields"
+      href: user-definable-fields.md
+      items:
+      - name: "Set Up User Definable Fields" 
+        href: set-up-user-definable-fields.md
+      - name: "More About User Definable Fields" 
+        href: more-about-user-definable-fields.md
+      - name: "Source Interface and User Definable Fields" 
+        href: source-interface-and-user-definable-fields.md    
+    - name: "Ship via Rules"
+      href: ship-via-rules.md
+      items:
+      - name: "Ship Via Rules Overview"
+        href: ship-via-rules-overview.md
+      - name: "Ship Via Rules Settings"
+        href: ship-via-rules-settings.md
+      - name: "Disable Services"
+        href:  disable-services.md
+      - name: "Switch Rules"
+        href:  switch-rules.md
+      - name: "Rate Shop Scenarios"
+        href:  rate-shop-scenarios.md
+    - name: "Freight"
+      href: freight.md
+      items:
+      - name: "Bill of Lading"
+        href: bill-of-lading.md
+      - name: "Freight Rules"
+        href:  freight-rules.md
+      - name: "Freight Rules Overview"
+        href: freight-rules-overview.md
+      - name: "Freight Rules Interfaces"
+        href: freight-rules-interfaces.md    
+      - name: "Add Freight Rules"
+        href: add-freight-rules.md 
+      - name: "Freight Rules Calculations"
+        href: freight-rules-calculations.md
+      - name: "Freight Rules Conditions"
+        href: freight-rules-conditions.md
+      - name: "Increase Shipment Freight $5 Per Shipment"
+        href: increase-shipment-freight-5-per-shipment.md
+    - name: "Printing and Scale"
+      href: printing-and-scale.md
+      items:
+      - name: "Printers"
+        href: printers.md
+      - name: "Printing Profiles"
+        href: printing-profiles.md
+      - name: "Custom Documents"
+        href: custom-documents.md
+      - name: "Scale"
+        href: scale.md
+      - name: "Document Settings"
+        href: document-settings.md   
+      - name: "Define Printing Conditions"
+        href: define-printing-conditions.md  
+      - name: "Supported Printers"
+        href: supported-printers.md
+      - name: "Supported Scales"
+        href: supported-scales.md 
+    - name: "eNotify"
+      href: enotify.md
+      items:
+      - name: Microsoft Ends Support for Basic Authentication
+        href: microsoft-ends-support-for-basic-authentication.md 
+      - name: "eNotify Overview"
+        href: enotify-overview.md 
+      - name: "eNotify Configuration"
+        href: enotify-configuration.md
+      - name: "Using Your Own Domain with eNotify"
+        href: using-your-own-domain-with-enotify.md
+      - name: "Google Mail Setup"
+        href: google-mail-setup.md 
+      - name: "Template Designer"
+        href: template-designer.md
+      - name: "Template Properties"
+        href: template-properties.md
+      - name: "Create or Edit an eNotify Template"
+        href: create-or-edit-an-enotify-template.md
+      - name: "Text Properties"
+        href: text-properties.md
+      - name: "Links"
+        href: links.md
+      - name: "Images"
+        href: images.md
+      - name: "Shipment Fields"
+        href: shipment-fields.md
+      - name: "Dynamic Blocks"
+        href: dynamic-blocks.md
+      - name: "Queries"
+        href: queries.md
+      - name: "Preview Emails"
+        href: preview-emails.md
+    - name: "Report Designer" 
+      href: report-designer.md   
+      items:
+      - name: "Aptean Ship Reports Overview"
+        href: aptean-ship-reports-overview.md
+      - name: "Elements of a Report"
+        href: elements-of-a-report.md
+      - name: "Aptean Ship Reports"
+        href: aptean-ship-reports.md
+- name: "eCommerce"
+  href: ecommerce.md
+  items:
+  - name: "Amazon"
+    href: amazon.md
+    items:
+    - name: "Amazon MWS"
+      href: amazon-mws.md
+      items:
+      - name: "Overview or Requirements"
+        href: overview-requirements.md
+      - name: "Amazon MWS Setup"
+        href: amazon-mws-setup.md
+      - name: "Aptean Ship Setup"
+        href: aptean-ship-setup.md
+      - name: "eNotify Setup"
+        href: notify-setup.md
+    - name: "Amazon DF"
+      href: amazon-df.md
+      items:
+      - name: "Amazon Direct Fulfillment"
+        href: amazon-direct-fulfillment.md
+      - name: "Amazon SP"
+        href: amazon-sp.md
+      - name: "Amazon SP Overview"
+        href: amazon-sp-overview.md
+      - name: "Amazon SP Setup"
+        href: amazon-sp-setup.md
+- name: "ERP" 
+  href: erp.md
+  items:
+  - name: "Made2Manage"
+    href: made2-manage.md
+    items:
+      - name: "M2M overview"
+        href: m2m-overview.md
+      - name: "M2M Carrier Setup"
+        href: m2m-carrier-setup.md
+      - name: "M2M Options"
+        href: m2m-options.md
+      - name: "Mapping M2M fields"
+        href: mapping-m2m-fields.md
+      - name: "Ship M2M Shipments"
+        href: ship-m2m-shipments.md    
+      - name: "Write-Back to M2M Shipments"
+        href: writeback-to-m2m-shipments.md     
+      - name: "Void or Edit a processed M2M Shipment"
+        href: void-or-edit-a-processed-m2m-shipment.md    
+- name: "Carriers"
+  href: carriers.md
+  items:
+    - name: "Parcel"
+      href: parcel.md
+      items:
+        - name: DHL
+          href: dhl.md
+          items:
+          - name: "DHL overview"
+            href: dhl-overview.md
+          - name: "Set up a DHL account"
+            href: set-up-dhl-account.md
+          - name: "DHL General Main Settings"
+            href: dhl-general-settings-main.md
+          - name: "DHL Settings"
+            href: dhl-settings.md
+          - name: "DHL Shipping"
+            href: dhl-shipping.md  
+    - name: FedEx   
+      href: fedex.md
+      items:   
+        - name: "FedEx Account Setup"
+          href: fedex-account-setup.md
+        - name: "FedEx Canada Origin Setup"
+          href: fedex-canada-origin-setup.md
+        - name: "FedEx Canada Origin Shipment"
+          href: fedex-canada-origin-shipment-process.md 
+        - name: "FedEx General Settings (Main)"
+          href: fedex-general-settings-main.md
+        - name: "FedEx Settings"
+          href: fedex-settings.md
+        - name: "FedEx Ground® Economy"
+          href: fedex-ground-economy.md
+        - name: "FedEx Returns"
+          href: fedex-returns.md
+        - name: "FedEx Services"
+          href: fedex-services.md
+        - name: "FedEx International Ground Consolidation"
+          href: fedex-international-ground-consolidation.md
+        - name: "FedEx Dangerous Goods or Hazardous Materials Shipments"
+          href: fedex-dangerous-goods-hazardous-materials-shipments.md  
+    - name: "OnTrac"
+      href: ontrac.md
+      items:
+        - name: "Set Up a New OnTrac Account"
+          href: set-up-a-new-ontrac-account.md
+        - name: "OnTrac Settings"
+          href: ontrac-settings.md 
+        - name: "OnTrac General Settings (Main)"
+          href: ontrac-general-settings-main.md
+        - name: "OnTrac Shipping"
+          href: ontrac-shipping.md    
+        - name: Spee-Dee
+          href: spee-dee.md
+          items:
+            - name: "Spee-Dee account setup"
+              href: speedee-account-setup.md
+            - name: "Spee-Dee settings"
+              href: speedee-settings.md
+            - name: "Spee-Dee fuel surcharge"
+              href: speedee-fuel-surcharge.md
+            - name: "Spee-Dee Shipping"
+              href: speedee-shipping.md
+        - name: Spee-Dee 2
+          href: spee-dee2.md
+          items:
+            - name: "Spee-Dee 2 account setup"
+              href: speedee2-account-setup.md
+            - name: "Spee-Dee 2 settings"
+              href: speedee2-settings.md
+            - name: "Spee-Dee 2 fuel surcharge"
+              href: speedee2-fuel-surcharge.md
+            - name: "Spee-Dee 2 Shipping"
+              href: speedee2-shipping.md
+        - name: UPS
+          href: ups.md
+          items:
+            - name: "UPS Account setup"
+              href: ups-account-setup.md
+            - name: "UPS General settings (Main)"
+              href: ups-general-settings-main.md
+            - name: "UPS Settings"
+              href: ups-settings.md
+            - name: "UPS Canada origin setup"
+              href: ups-canada-origin-setup.md
+            - name: "UPS International Documents setup"
+              href: ups-international-documents-setup.md
+            - name: "UPS simple rate"
+              href: ups-simple-rate.md
+            - name: "UPS mail innovations"
+              href: ups-mail-innovations.md
+            - name: "UPS SurePost"
+              href: ups-surepost.md
+            - name: "Process a UPS Canada shipment"
+              href: process-a-ups-canada-shipment.md
+            - name: "UPS hazardous materials shipments"
+              href: ups-hazardous-materials-shipments.md
+            - name: "UPS OAuth Account Setup Aptean Ship"
+              href: ups-oauth-account-setup.md
+        - name: USPS
+          href: usps.md
+          items:
+            - name: "EasyPost"
+              href: easypost.md
+              items:
+              - name: "EasyPost Account Setup" 
+                href: easypost-account-setup.md
+              - name: "EasyPost Settings"
+                href: easypost-settings.md
+              - name: "EasyPost Shipping"
+                href: easypost-shipping.md
+              - name: "Purolator E-Ship Web Services Setup"
+                href: purolator-eship-web-services-setup.md
+            - name: "Pitney Bowes"
+              href: pitney-bowes.md
+              items:
+              - name: "Pitney Bowes Overview"
+                href: pitney-bowes-overview.md
+              - name: "Pitney Bowes Account Setup"
+                href: pitney-bowes-account-setup.md
+              - name: "Pitney Bowes General Settings (Main)"
+                href: pitney-bowes-general-settings-main.md
+              - name: "Pitney Bowes Settings"
+                href: pitney-bowes-settings.md
+              - name: "Pitney Bowes Printing Setup"
+                href: pitney-bowes-printing-setup.md
+              - name: "Check Postage Balance"
+                href: check-postage-balance.md
+    - name: "Freight"
+      href: freight.md
+      items:
+        - name: "AAA Cooper"
+          href: aaa-cooper.md
+          items:
+          - name: "AAA Cooper Web Services Setup"
+            href: aaa-cooper-web-services-setup.md
+          - name: "AAA Cooper Account Setup"
+            href: aaa-cooper-account-setup.md
+          - name: "AAA Cooper Main Options"
+            href: aaa-cooper-main-options.md
+          - name: "AAA Cooper Shipping"
+            href: aaa-cooper-shipping.md
+          - name: "AAA Cooper Troubleshooting"
+            href: aaa-cooper-troubleshooting.md
+        - name: "ABF Freight"
+          href: abf-freight.md
+          items:
+            - name: "ABF Freight Setup"
+              href: abf-freight-setup.md
+            - name: "ABF Freight Settings"
+              href: abf-freight-settings.md
+            - name: "ABF Freight Main Options"
+              href: abf-freight-main-options.md
+            - name: "ABF Freight Shipping"
+              href: abf-freight-shipping.md
+        - name: "A Duie Pyle"
+          href: a-duie-pyle.md
+          items:    
+            - name: "A. Duie Pyle Setup"
+              href: a-duie-pyle-setup.md
+            - name: "A. Duie Pyle General Options (Main)"
+              href: a-duie-pyle-general-options-main.md
+            - name: "A. Duie Pyle Shipping"
+              href: a-duie-pyle-shipping.md
+        - name: "Averitt Express"
+          href: averitt-express.md
+          items:    
+            - name: "Averitt Express Setup"
+              href: averitt-express-setup.md
+            - name: "Averitt Express Main Options"
+              href: averitt-express-main-options.md
+            - name: "Averitt Express Shipping"
+              href: averitt-express-shipping.md
+        - name: "Daylight Transport"
+          href: daylight-transport.md
+          items:  
+            - name: "Daylight Transport Setup"
+              href: daylight-transport-setup.md
+            - name: "Daylight Transport Main Options"
+              href: daylight-transport-main-options.md
+            - name: "Daylight Transport Shipping"
+              href: daylight-transport-shipping.md 
+        - name: "Dayton Freight"
+          href: dayton-freight.md
+          items: 
+          - name: "Dayton Web Services Setup"
+            href: dayton-web-services-setup.md
+          - name: "Dayton Freight Setup"
+            href: dayton-freight-setup.md
+          - name: "Dayton Freight Main Settings"
+            href: dayton-freight-main-settings.md
+          - name: "Dayton Freight Shipping"
+            href: dayton-freight-shipping.md
+        - name: "Dependable"
+          href: dependable.md
+          items:
+          - name: "Dependable Highway Express Setup"
+            href: dependable-highway-express-setup.md
+          - name: "Dependable Highway Express Main Options"
+            href: dependable-highway-express-main-options.md
+          - name: "Dependable Highway Express Shipping"
+            href: dependable-highway-express-shipping.md
+        - name: "Estes Express Lines"
+          href: estes-express-lines.md
+          items:
+          - name: "Estes Express Setup"
+            href: estes-express-setup.md
+          - name: "Estes Express Main Options"
+            href: estes-express-main-options.md
+          - name: "Estes Express Settings"
+            href: estes-express-settings.md
+          - name: "Estes Express Shipping"
+            href: estes-express-shipping.md
+        - name: "FedEx Freight"
+          href: fedex-freight.md
+          items:
+          - name: "FedEx Freight Setup"
+            href: fedex-freight-setup.md
+          - name: "FedEx Freight Main Options"
+            href: fedex-freight-main-options.md
+          - name: "FedEx Freight Settings"
+            href: fedex-freight-settings.md
+          - name: "FedEx Freight Shipping"
+            href: fedex-freight-shipping.md
+        - name: "Freightquote.com"
+          href:   freight-quote.md
+          items:
+            - name: "Freightquote.com Setup"
+              href: freightquotecom-setup.md
+            - name: "Freightquote.com Main Options"
+              href: freightquotecom-main-options.md
+            - name: "Freightquote.com Settings"
+              href: freightquotecom-settings.md
+            - name: "Freightquote.com Shipping Notes"
+              href: freightquotecom-shipping-notes.md
+        - name: "Freightview"
+          href: freight-view.md
+          items:
+          - name: "Freightview Setup"
+            href: freightview-setup.md
+          - name: "Freightview Account Settings"
+            href: freightview-account-settings.md
+          - name: "Freightview General Settings"
+            href: freightview-general-settings.md
+          - name: "Freightview Shipping"
+            href: freightview-shipping.md
+        - name: "Holland Carriers"
+          href: holland-carriers.md
+          items:
+          - name: "Holland Carriers Setup"
+            href: holland-carriers-setup.md
+          - name: "Holland Carriers Main Options"
+            href: holland-carriers-main-options.md
+          - name: "Holland Carriers Shipping"
+            href: holland-carriers-shipping.md
+        - name: "Manual Processing"
+          href: manual-processing.md
+          items:
+            - name: "Set Up the Carrier(s)"
+              href: set-up-the-carriers.md
+            - name: "Set Up Ship Via for Manually Added Carriers"
+              href: set-up-ship-via-for-manually-added-carriers.md
+            - name: "Configure Tracking Number"
+              href: configure-tracking-number.md
+            - name: "Enable Printing of Package Labels"
+              href: enable-printing-of-package-labels.md
+        - name: "New Penn"
+          href: new-penn.md
+          items:
+            - name: "New Penn Setup"
+              href: new-penn-setup.md
+            - name: "New Penn Main Options"
+              href: new-penn-main-options.md
+            - name: "New Penn Settings"
+              href: new-penn-settings.md
+            - name: "New Penn Shipping"
+              href: new-penn-shipping.md
+        - name: "Old Dominion"
+          href: old-dominion.md
+          items:
+            - name: "Old Dominion Setup"
+              href: old-dominion-setup.md
+            - name: "Old Dominion Main Options"
+              href: old-dominion-main-options.md
+            - name: "Old Dominion Settings"
+              href: old-dominion-settings.md
+            - name: "Old Dominion Shipping"
+              href: old-dominion-shipping.md
+        - name: "Pitt Ohio"
+          href: pitt-ohio.md
+          items: 
+            - name: "Pitt Ohio Setup"
+              href: pitt-ohio-setup.md
+            - name: "Pitt Ohio Main Options"
+              href: pitt-ohio-main-options.md
+            - name: "Pitt Ohio Shipping"
+              href: pitt-ohio-shipping.md
+        - name: "R + L Carriers"
+          href: rl-carriers.md
+          items:
+            - name: "Get the API Key"
+              href: get-the-api-key.md
+            - name: "R+L Carriers Main Options"
+              href: rl-carriers-main-options.md
+            - name: "R+L Carriers Setup"
+              href: rl-carriers-setup.md
+            - name: "R+L Carriers Shipping"
+              href: rl-carriers-shipping.md
+        - name: "Reddaway Carriers"
+          href: reddaway-carriers.md
+          items:
+            - name: "Reddaway Carriers Setup"
+              href: reddaway-carriers-setup.md
+            - name: "Reddaway Carriers Main Options"
+              href:  reddaway-carriers-main-options.md
+            - name: "Reddaway Carriers Shipping"
+              href:  reddaway-carriers-shipping.md
+        - name: "Roadrunner"
+          href: roadrunner.md
+          items:
+            - name: "Roadrunner Setup"
+              href: roadrunner-setup.md
+            - name: "Roadrunner Shipment Pickup Requests"
+              href: roadrunner-shipment-pickup-requests.md
+            - name: "Roadrunner Main Options"
+              href: roadrunner-main-options.md
+            - name: "Roadrunner Shipping"
+              href: roadrunner-shipping.md
+        - name: "Saia"
+          href: saia.md
+          items:
+            - name: "Saia Setup"
+              href: saia-setup.md
+            - name: "Saia Main Options"
+              href: saia-main-options.md
+            - name: "Saia Settings"
+              href: saia-settings.md
+            - name: "Saia Shipping"
+              href: saia-shipping.md
+        - name: "SMC³"
+          href: smc.md
+          items:
+            - name: "SMC³ Overview"
+              href: smc-overview.md
+            - name: "SMC³ Account Setup"
+              href:  smc-account-setup.md    
+            - name: "SMC³ Contract Setup"
+              href: smc-contract-setup.md
+            - name: "SMC³ Billing Settings"
+              href: smc-billing-settings.md
+            - name: "SMC³ Main Options"
+              href: smc-main-options.md
+            - name: "SMC³ Shipping"
+              href: smc-shipping.md
+        - name: "Southeastern"
+          href: southeastern.md
+          items:
+            - name: "Southeastern Setup"
+              href: southeastern-setup.md
+            - name: "Southeastern Main Options"
+              href: southeastern-main-options.md
+            - name: "Southeastern Shipping"
+              href: southeastern-shipping.md
+        - name: "TForce Freight"
+          href: tforce-freight.md
+          items:
+            - name: "TForce Freight Prerequisite Setup"
+              href: tforce-freight-prerequisite-setup.md
+            - name: "TForce Freight Setup"
+              href: tforce-freight-setup.md
+            - name: "TForce Freight Main Options"
+              href:  tforce-freight-main-options.md
+            - name: "TForce Freight Settings"
+              href: tforce-freight-settings.md
+            - name: "TForce Freight Shipping"
+              href: tforce-freight-shipping.md
+        - name: "Worldwide Express"
+          href:  worldwide-express.md    
+          items:
+            - name: "Worldwide Express Setup"
+              href:  worldwide-express-setup.md
+            - name: "Worldwide Express Settings"
+              href:  worldwide-express-settings.md
+            - name: "Worldwide Express Billing Settings"
+              href:  worldwide-express-billing-settings.md
+            - name: "Worldwide Express Main Options"
+              href:  worldwide-express-main-options.md
+            - name: "Worldwide Express Shipping"
+              href: worldwide-express-shipping.md
+        - name: "XPO Logistics"
+          href:  xpo-logistics.md    
+          items:      
+            - name: "XPO Logistics Setup"
+              href:  xpo-logistics-setup.md 
+            - name: "XPO Logistics Settings"
+              href:  xpo-logistics-settings.md
+            - name: "XPO Logistics Main Options"
+              href: xpo-logistics-main-options.md
+            - name: "XPO Logistics Shipping"
+              href: xpo-logistics-shipping.md
+        - name: "YRC"
+          href:  yrc.md    
+          items: 
+            - name: "YRC Setup"
+              href: yrc-setup.md
+            - name: "YRC Settings"
+              href: yrc-settings.md
+            - name: "YRC Main Options"
+              href: yrc-main-options.md
+            - name: "YRC Printing Setup"
+              href: yrc-printing-setup.md
+            - name: "YRC Shipping"
+              href: yrc-shipping.md
+        - name: "Shipment Options"
+          href:  shipment-options.md   
+          items:   
+            - name: "Call Before Delivery"
+              href:  call-before-delivery.md
+            - name: "Inbound Freight"
+              href: inbound-freight.md
+    - name: "Classification"
+      href: classification.md
+    - name: "BOL Printout Examples"
+      href: bol-printout-examples.md
+    - name: "Navigating By License Plate Number"
+      href: navigating-by-license-plate-number.md
+    - name: "Printing By License Plate Number"
+      href: printing-by-license-plate-number.md
+    - name: "Carrier Interfaces Setup"
+      href: carrier-interfaces-setup.md
+    - name: "Carrier Reference Fields"
+      href: carrier-reference-fields.md
+- name: "Shipping"
+  href: shipping.md
+  items:
+    - name: "General Information"
+      href: general-info.md
+      items:
+        - name: "Searching in Aptean Ship"
+          href: searching-in-aptean-ship.md
+        - name: "Process a parcel shipment"
+          href: process-a-parcel-shipment.md 
+        - name: "Process a freight (LTL) shipment"
+          href: process-a-freight-ltl-shipment.md
+        - name: "Process a shipment without a source document"
+          href: process-a-shipment-without-a-source-document.md
+        - name: "Rate shopping"
+          href: rate-shopping.md
+        - name: "Batch processing"
+          href: batch-processing.md
+        - name: "Consolidated shipments"
+          href: consolidated-shipments.md
+        - name: "Packing line items"
+          href: packing-line-items.md
+        - name: "Address validation while processing shipments"
+          href: address-validation-while-processing-shipments.md
+        - name: "Print on next"
+          href: print-on-next.md
+        - name: "Shipment details"
+          href: shipment-details.md
+        - name: "Printing notifications"
+          href: Printing-notifications.md
+        - name: "Shipment reports"
+          href: shipment-reports.md
+        - name: "Recent shipments"
+          href: recent-shipments.md
+        - name: "Tab order"
+          href: tab-order.md
+        - name: "End of Day"
+          href: end-of-day.md
+        - name: "Reprocess a shipment"
+          href: reprocess-a-shipment.md
+        - name: "Reprint labels/Shipment documents for processed shipments"
+          href: reprint-labels-shipment-documents-for-processed-shipments.md    
+    - name: "Dashboard"
+      href: dashboard.md
+      items:
+        - name: Views
+          href: views.md
+          items:
+            - name: "Dashboard Overview"
+              href: dashboard-overview.md
+            - name: "Creating and sharing views"
+              href: creating-and-sharing-views.md
+        - name: "History and Status"
+          href: history-and-status.md
+          items:  
+            - name: "History and Status Tables"
+              href: history-status-tables.md
+            - name: "Default Tables"
+              href: default-tables.md
+            - name: "Shipment Tracking"
+              href: shipment-tracking.md
+        - name: "Charts"
+          href: charts.md
+        - name: "Reports"
+          href: reports.md
+          items:
+            - name: "Aptean Ship Reports Overview" 
+              href: aptean-ship-reports-overview.md
+            - name: "Elements of a Report"
+              href: elements-of-a-report.md
+            - name: "Aptean Ship Reports"
+              href: aptean-ship-reports.md
+    - name: "Dashboard User Setup"
+      href: dashboard-user-setup.md
+    - name: "Shipment Import and Export"
+      href: shipment-import-export.md
+      items:
+        - name: "Shipment Import"
+          href: shipment-import.md
+          items:
+            - name: "Shipment Import overview"
+              href: shipment-import-overview.md
+            - name: "Import Template Setup"
+              href: import-template-setup.md
+            - name: "Customize Import Mapping"
+              href: customize-import-mapping.md
+            - name: "Import Template Settings"
+              href: import-template-settings.md
+            - name: "Import Shipments"
+              href: import-shipments.md
+            - name: "Update the Source File"
+              href: update-the-source-file.md
+            - name: "Manage Imported Batches"
+              href: manage-imported-batches.md
+        - name: "Shipment Export"
+          href: shipment-export.md
+          items:
+            - name: "Simple Shipment Export"
+              href: simple-shipment-export.md
+            - name: "Advanced Export Setup"
+              href: advanced-export-setup.md
+            - name: "Advanced Shipment Export"
+              href: advanced-shipment-export.md
+            - name: "Export Preview"
+              href: export-preview.md
+    - name: "Hazardous Materials and Dangerous Goods"
+      href: hazardous-materials-dangerous-goods.md
+      items:
+        - name: "Hazardous Materials Setup"
+          href: hazardous-materials-setup.md
+    - name: "Freight Rules"
+      href:  freight-rules.md
+      items:
+      - name: "Freight Rules Overview"
+        href: freight-rules-overview.md
+      - name: "Freight Rules Interfaces"
+        href: freight-rules-interfaces.md    
+      - name: "Add Freight Rules"
+        href: add-freight-rules.md 
+      - name: "Freight Rules Calculations"
+        href: freight-rules-calculations.md
+      - name: "Freight Rules Conditions"
+        href: freight-rules-conditions.md
+      - name: "Increase Shipment Freight $5 Per Shipment"
+        href: increase-shipment-freight-5-per-shipment.md                    
+    - name: "Ship via Rules"
+      href: ship-via-rules.md
+      items:
+      - name: "Ship Via Rules Overview"
+        href: ship-via-rules-overview.md
+      - name: "Ship Via Rules Settings"
+        href: ship-via-rules-settings.md
+      - name: "Disable Services"
+        href:  disable-services.md
+      - name: "Switch Rules"
+        href:  switch-rules.md
+      - name: "Rate Shop Scenarios"
+        href:  rate-shop-scenarios.md
+- name: "Maintain"
+  href: maintain.md
+  items:
+    - name: "3PL"
+      href: 3pl.md
+      items:
+        - name: "3PL Overview"
+          href: 3pl-overview.md
+        - name: "3PL Information"
+          href: 3pl-information.md
+    - name: "Brokers"
+      href: brokers.md
+      items:
+        - name: "Brokers Overview"
+          href: brokers-overview.md
+        - name: "Broker Information"
+          href: broker-information.md
+    - name: "Customers"
+      href: customers.md
+      items:
+      - name: "Customers Overview"
+        href: customers-overview.md
+      - name: "Customer Information"
+        href: customer-information.md
+      - name: "Import DC Codes"
+        href: import-dc-codes.md
+    - name: "Importer"
+      href: importer.md
+      items:
+      - name: "Importers Overview"
+        href: importers-overview.md
+    - name: "Inventory Items"
+      href: inventory-items.md
+      items:
+      - name: "Inventory Items Overview"
+        href: inventory-items-overview.md
+      - name: "Main Inventory Item Info"
+        href: main-inventory-item-info.md
+      - name: "Inventory Item Freight"
+        href: inventory-item-freight.md
+      - name: "Inventory Item International Data"
+        href: inventory-item-international-data.md
+      - name: "Inventory Item Packaging"
+        href: inventory-item-packaging.md
+      - name: "Inventory Item User Fields"
+        href: inventory-item-user-fields.md
+    - name: "NMFC"
+      href: nmfc.md
+      items:
+      - name: "NMFC Overview"
+        href: nmfc-overview.md
+      - name: "NMFC Information"
+        href: nmfc-information.md
+    - name: "Packaging"
+      href: packaging.md
+      items:
+      - name: "Packaging Overview"
+        href: packaging-overview.md
+      - name: "Switching From Freight to Parcel"
+        href: switching-from-freight-to-parcel.md
+    - name: "Third Party Addresses"
+      href: third-party-address.md
+      items:
+      - name: "Third Party Addresses Overview"
+        href: third-party-addresses-overview.md
+      - name: "Third Party Addresses Information"
+        href: third-party-addresses-information.md
+    - name: "Third Party Insurers"
+      href: third-party-insurers.md
+      items:
+      - name: "Third Party Insurers Overview"
+        href: third-party-insurers-overview.md
+      - name: "Third Party Insurers Address Information"
+        href: third-party-insurers-address-information.md
+      - name: "Third Party Insurers Settings"
+        href: third-party-insurers-settings.md
+      - name: "UPS Capital"
+        href: ups-capital.md
+    - name: "Hazardous Materials Profiles"    
+      href: hazardous-materials-profiles.md
+      items:
+      - name: "Hazardous Materials Profiles Overview"
+        href: hazardous-materials-profiles-overview.md
+      - name: "Notes About Importing HazMat Profiles"
+        href: notes-about-importing-hazmat-profiles.md
+      - name: "Hazardous Materials Preferences"
+        href: hazardous-materials-preferences.md
+      - name: "Create or Maintain Hazardous Materials Profiles"
+        href: create-maintain-hazardous-materials-profiles.md
+      - name: "Assigning Hazardous Materials Profiles"
+        href: assigning-hazardous-materials-profiles.md
+- name: "Keywords"
+  href: keywords.md
+- name: "Import Data"
+  href: import-data.md
+- name: "Queries"
+  href: queries.md
+- name: "Hyperlinked Phone Numbers"
+  href: hyperlinked-phone-numbers.md

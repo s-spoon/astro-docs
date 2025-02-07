@@ -1,0 +1,31 @@
+- name: "Purchasing"
+  href: Purchasing.md
+  items:
+    - name: "Using Purchasing Search"
+      href: Using-Purchasing-Search.md
+    - name: "Using the Purchase Order Module"
+      href: Using-the-Purchase-Order-Module.md
+    - name: "Create a New Purchase Order"
+      href: Create-a-New-Purchase-Order.md
+    - name: "Using the PO Text Search"
+      href: Using-the-PO-Text-Search.md
+    - name: "Create a New PO Text"
+      href: Create-a-New-PO-Text.md
+    - name: "Change Order"
+      href: Change-Order.md
+    - name: "Blanket Order"
+      href: Blanket-Order.md
+    - name: "Service Contract Purchase Order"
+      href: Service-Contract-Purchase-Order.md
+    - name: "Release From Blanket Order"
+      href: Release-From-Blanket-Order.md
+    - name: "Protect Supplier on PO and Blanket Change Orders"
+      href: Protect-Supplier-on-PO-and-Blanket-Change-Orders.md
+    - name: "Auto Issue"
+      href: Auto-Issue.md
+    - name: "PO Receipts"
+      href: PO-Receipts.md
+    - name: "ECatalog Error"
+      href: ECatalog-Error.md
+    - name: "Printing Purchase Order"
+      href: Printing-Purchase-Order.md
