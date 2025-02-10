@@ -1,6 +1,7 @@
 <script lang="ts">
   import { currentItem, type Item } from '@/bundle-hierarchy';
   import { tw } from '@/tw';
+  import getTOC, { type TOCEntry } from "@/TOC";
 
   // Props for the card component
   // export let item: Item, baseURI: string;
@@ -50,12 +51,12 @@
     relative
   `
 
-  const handleViewChange = (item: Item) => (e: MouseEvent) => {
-    if (link) return;
-    e.preventDefault();
+  // const handleViewChange = (item: Item) => (e: MouseEvent) => {
+  //   if (link) return;
+  //   e.preventDefault();
 
-    currentItem.set(item);
-  }
+  //   currentItem.set(item);
+  // }
 
   let showAll = false;
 

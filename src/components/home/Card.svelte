@@ -1,6 +1,7 @@
 <script lang="ts">
   import { currentItem, type Item } from '@/bundle-hierarchy';
   import { tw } from '@/tw';
+  import getTOC, { type TOCEntry } from "@/TOC";
 
   // Props for the card component
   export let item: Item, baseURI: string;

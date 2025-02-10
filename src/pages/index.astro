@@ -8,7 +8,7 @@ import getTOC, { type TOCEntry } from "@/TOC";
 
 const appMapping = await db.select().from(AppMapping);
 
-const remappedTOCList = await Promise.all(
+const remappedTOCLists = await Promise.all(
   appMapping.map(async (appName) => {
     try {
       const appShort = await getApp(appName.short!).then((a) => a.short);
@@ -26,10 +26,12 @@ const remappedTOCList = await Promise.all(
       return { appLong, remappedTOC };
     } catch (error) {
       console.error(`App not found: ${appName.short}`, error);
-      return undefined;
+      return null;
     }
   })
 );
+
+const filteredTOCLists = remappedTOCLists.filter((item) => item !== null);
 ---
 
 <Site class="overflow-hidden flex flex-col">
@@ -37,6 +39,6 @@ const remappedTOCList = await Promise.all(
     <h2 class="font-semibold text-3xl text-white pl-2">Product Documentation</h2>
   </header>
   <div class="overflow-auto">
-    <View baseURI={import.meta.env.BASE_URL} client:only="svelte" remappedTOCList={remappedTOCList} />
+    <View baseURI={import.meta.env.BASE_URL} client:only="svelte" remappedTOCList={filteredTOCLists} />
   </div>
 </Site>

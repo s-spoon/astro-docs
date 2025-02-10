@@ -1,12 +1,14 @@
 <script lang="ts">
   import Card from "./Card.svelte";
   import { currentItem } from "@/bundle-hierarchy";
+  import getTOC, { type TOCEntry } from "@/TOC";
 
   export let baseURI: string;
-  export let remappedTOCList: {
-  appLong: string;
-  remappedTOC: TOCEntry[];
-} 
+  export let remappedTOCList: Array<{ appLong: string; remappedTOC: TOCEntry[] }>;
+//   export let remappedTOCList: {
+//   appLong: string;
+//   remappedTOC: TOCEntry[];
+// } 
 
   $: icons = $currentItem.items?.flatMap(function getIcon(item): string[] {
     

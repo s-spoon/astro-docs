@@ -5,124 +5,141 @@ import { AppMapping } from "astro:db";
 import { getApp } from "@/pages/[appName]/_getApp";
 import getTOC, { type TOCEntry } from "@/TOC";
 
-interface RemappedTOCData {
-  appLong: string;
-  remappedTOC: TOCEntry[];
-}
-
-let activeEntry = '';
+let activeEntry = "";
 const appMapping = await db.select().from(AppMapping);
-const remappedTOCList: RemappedTOCData[] = (await Promise.all(
+const remappedTOCList = await Promise.all(
   appMapping.map(async (appName) => {
     try {
-      const appShort = await getApp(appName.short!).then(a => a.short);
-      const appLong = await getApp(appName.short!).then(a => a.long);
+      const appShort = await getApp(appName.short!).then((a) => a.short);
+      const appLong = await getApp(appName.short!).then((a) => a.long);
       const ymlTOC = await getTOC(appShort);
-      const remappedTOC = ymlTOC.map(function setActive(entry){
+      const remappedTOC = ymlTOC.map(function setActive(entry) {
         let active = false;
-        if (entry.href)
-        active = Astro.url.pathname.toLowerCase().includes(entry.href.toLowerCase());
-        
-        if (entry.items)
-          entry.items = entry.items.map(setActive)
+        if (entry.href) active = Astro.url.pathname.toLowerCase().includes(entry.href.toLowerCase());
 
-        if (active)
-          activeEntry = entry.href!;
-      
-        return {...entry, active};
+        if (entry.items) entry.items = entry.items.map(setActive);
+
+        if (active) activeEntry = entry.href!;
+
+        return { ...entry, active };
       });
-      
+
       return { appLong, remappedTOC };
     } catch (error) {
       console.error(`App not found: ${appName.short}`, error);
-      return undefined;
+      return null;
     }
   })
-)).filter((item): item is RemappedTOCData => item !== undefined);
+);
 
-const active="hover:bg-white hover:text-aptean-dark",
-inactive="bg-aptean-dark text-white border-white border-[1px] text-base"
+const filteredTOCLists = remappedTOCList.filter((item) => item !== null);
 
-const searchKEY: string = (import.meta.env.SEARCH_KEY || process.env['SEARCH_KEY']) ?? "";
-const searchHOST: string = import.meta.env.PROD ? import.meta.env.SITE + 'appcentral-meilisearch/' : 'http://localhost:7700/';
+const active = "hover:bg-white hover:text-aptean-dark",
+  inactive = "bg-aptean-dark text-white border-white border-[1px] text-base";
+
+const searchKEY: string = (import.meta.env.SEARCH_KEY || process.env["SEARCH_KEY"]) ?? "";
+const searchHOST: string = import.meta.env.PROD
+  ? import.meta.env.SITE + "appcentral-meilisearch/"
+  : "http://localhost:7700/";
 ---
+
 <nav class="bg-aptean-white h-16 grid grid-cols-[auto_1fr_auto] px-4">
-  <a href={import.meta.env.BASE_URL}><img src={`${import.meta.env.BASE_URL}aptean-black.svg`} class="h-full p-2"/></a>
+  <a href={import.meta.env.BASE_URL}><img src={`${import.meta.env.BASE_URL}aptean-black.svg`} class="h-full p-2" /></a>
   <div class="inline-block hidden md:flex items-center gap-2">
     <span class="h-3/5 mx-4 border-r border-gray-300"></span>
-    <button 
-      id="dropdownHoverButton" 
+    <button
+      id="dropdownHoverButton"
       class="cursor-pointer font-semibold text-xl hover:bg-blue-600 hover:text-white px-5 py-4"
       aria-expanded="false"
       aria-haspopup="true"
     >
       Product Documentation
     </button>
-    <div 
-      id="dropdownHover" 
+    <div
+      id="dropdownHover"
       class="z-10 flex hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm absolute w-full top-[6.5%] left-0"
       aria-labelledby="dropdownHoverButton"
     >
-      {remappedTOCList.map(({ appLong, remappedTOC }) => (
-        <div>
-          <span class="block text-lg text-gray-500 px-4 py-2 cursor-default">{appLong}</span>
-          <ul class="py-2 text-sm text-black">
-            {remappedTOC.map((data: any) => (
-              <li>
-                {data.href || data.items?.[0]?.href || data.items?.[1]?.href ? (
-                  <a 
-                    href={`${import.meta.env.BASE_URL}${data.href || data.items?.[0]?.href || data.items?.[1]?.href}`} 
-                    class="block text-xl px-4 py-2 hover:bg-blue-600 hover:text-white"
-                  >
-                    {data.name}
-                  </a>
-                ) : (
-                  <span class="block text-xl px-4 py-2 cursor-default">
-                    {data.name}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {
+        filteredTOCLists.map(({ appLong, remappedTOC }) => (
+          <div>
+            <span class="block text-lg text-gray-500 px-4 py-2 cursor-default">{appLong}</span>
+            <ul class="py-2 text-sm text-black">
+              {remappedTOC.map((data: any) => (
+                <li>
+                  {data.href || data.items?.[0]?.href || data.items?.[1]?.href ? (
+                    <a
+                      href={`${import.meta.env.BASE_URL}${data.href || data.items?.[0]?.href || data.items?.[1]?.href}`}
+                      class="block text-xl px-4 py-2 hover:bg-blue-600 hover:text-white"
+                    >
+                      {data.name}
+                    </a>
+                  ) : (
+                    <span class="block text-xl px-4 py-2 cursor-default">{data.name}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
     </div>
   </div>
-  
+
   <div class="hidden sm:flex gap-2 items-center">
     <div class="relative text-gray-600">
-      <input type="search" placeholder="Search" class="bg-white h-10 px-3 pr-10 rounded-lg text-md focus:outline-none" oninput="dispatchSearch(this)" />
+      <input
+        type="search"
+        placeholder="Search"
+        class="bg-white h-10 px-3 pr-10 rounded-lg text-md focus:outline-none"
+        oninput="dispatchSearch(this)"
+      />
       <button type="submit" class="flex absolute right-0 top-0 mt-3 mr-3 text-black">
-        <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
-          <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
+        <svg
+          class="h-4 w-4 fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          id="Capa_1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 56.966 56.966"
+          style="enable-background:new 0 0 56.966 56.966;"
+          xml:space="preserve"
+          width="512px"
+          height="512px"
+        >
+          <path
+            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+          ></path>
         </svg>
       </button>
     </div>
 
     <div class="flex items-center mx-6 text-black">
-        <img src={`${import.meta.env.BASE_URL}earth.svg`} class="w-6 h-6 mr-2" />
-        <span class="font-semibold text-lg">EN - US</span>
+      <img src={`${import.meta.env.BASE_URL}earth.svg`} class="w-6 h-6 mr-2" />
+      <span class="font-semibold text-lg">EN - US</span>
     </div>
   </div>
 </nav>
 <aside id="site-sidebar" class="hidden fixed w-full h-full grid-cols-1 content-center bg-aptean-light text-xl z-10">
   <button id="close-sidebar" class={`${active} border-aptean-light p-2 absolute top-2 right-2`}>
-    <XIcon class="w-6 h-6"/>
+    <XIcon class="w-6 h-6" />
   </button>
   <a class="flex gap-2 p-6 items-center justify-center" href={`${import.meta.env.BASE_URL}search/`}>
-    <Search class="w-5 h-5"/>
+    <Search class="w-5 h-5" />
     Search
   </a>
 </aside>
 
 <script>
-  const siteSidebar = document.querySelector('#site-sidebar') as HTMLElement;
-  const closeSidebar = document.querySelector('#close-sidebar') as HTMLButtonElement;
-  
-  closeSidebar.addEventListener('click', function(){
+  const siteSidebar = document.querySelector("#site-sidebar") as HTMLElement;
+  const closeSidebar = document.querySelector("#close-sidebar") as HTMLButtonElement;
+
+  closeSidebar.addEventListener("click", function () {
     siteSidebar.classList.remove("!grid");
-  })
-  
+  });
+
   const dropdownButton = document.querySelector("#dropdownHoverButton") as HTMLButtonElement;
   const dropdownMenu = document.querySelector("#dropdownHover") as HTMLElement;
 
@@ -153,5 +170,4 @@ const searchHOST: string = import.meta.env.PROD ? import.meta.env.SITE + 'appcen
       dropdownButton.setAttribute("aria-expanded", "false");
     }
   });
-
 </script>

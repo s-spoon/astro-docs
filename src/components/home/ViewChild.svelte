@@ -1,6 +1,7 @@
 <script lang="ts">
   import CardChild from "./CardChild.svelte";
   import { currentItem } from "@/bundle-hierarchy";
+  import getTOC, { type TOCEntry } from "@/TOC";
 
   export let baseURI: string;
   export let remappedTOC: TOCEntry[];
@@ -27,11 +28,11 @@
     <CardChild {baseURI} {remappedTOC} />
   <!-- {/each} -->
 </article>
-{#each $currentItem.groups || [] as [groupName, groupID]}
+<!-- {#each $currentItem.groups || [] as [groupName, groupID]}
   <article class="mx-4 flex flex-wrap content-start pb-4 mb-4 overflow-auto justify-center bg-aptean-light bg-opacity-20 rounded-md border border-aptean-dark">
     <h2 class="text-lg font-normal bg-aptean-dark text-white w-full py-2 px-2.5">{groupName}</h2>
     {#each $currentItem.items?.filter(it => it.groupID === groupID) || [] as item (item)}
       <CardChild {item} {baseURI} {remappedTOC} />
     {/each}
   </article>
-{/each}
+{/each} -->
