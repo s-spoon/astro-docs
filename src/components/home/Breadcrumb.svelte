@@ -3,7 +3,7 @@
   import { House } from "lucide-svelte";
 
   let path: Item[] = [];
-  export let appName: string;
+  export let appName: string | undefined;
 
   function constructPath(item: Item, path: Item[] = []){
     path.unshift(item);

@@ -3,8 +3,8 @@ import { getEntry } from "astro:content";
 import Site from "@/layouts/Site.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { TableOfContents as TOCIcon, X as XIcon } from "lucide-svelte";
-import { tw } from "@/tw"
-import { fade } from 'astro:transitions';
+import { tw } from "@/tw";
+import { fade } from "astro:transitions";
 
 import TOCTracker from "@/components/document/TOCTracker.svelte";
 import getTOC, { flattenTOC, type TOCEntry } from "@/TOC";
@@ -14,7 +14,7 @@ import Breadcrumb from "@/components/home/Breadcrumb.svelte";
 
 const { appName, article } = Astro.params;
 
-const appShort = await getApp(appName!).then(a => a.short);
+const appShort = await getApp(appName!).then((a) => a.short);
 const entry = await getEntry("docs", `${appShort}/${article}`.toLowerCase());
 
 if (!entry || entry.data.draft) {
@@ -22,7 +22,7 @@ if (!entry || entry.data.draft) {
 }
 
 const { Content, headings: _headings, remarkPluginFrontmatter } = await entry.render();
-const headings = _headings.filter(h => h.depth !== 6)
+const headings = _headings.filter((h) => h.depth !== 6);
 const docStyle = tw`
   prose
   row-span-4
@@ -102,32 +102,31 @@ const docStyle = tw`
 
   [&:after]:p-4
   [&:after]:[content:'']
-`
+`;
 
-let activeEntry = '';
+let activeEntry = "";
 const ymlTOC = await getTOC(appShort);
-const remappedTOC = ymlTOC.map(function setActive(entry): TOCEntry {
-  let active = false;
-  if (entry.href)
-    active = Astro.url.pathname.toLowerCase().includes(entry.href.toLowerCase());
+const remappedTOC = ymlTOC
+  .map(function setActive(entry): TOCEntry {
+    let active = false;
+    if (entry.href) active = Astro.url.pathname.toLowerCase().includes(entry.href.toLowerCase());
 
-  if (active)
-    activeEntry = entry.href!;
-  
-  entry.items = entry.items || [];
-  entry.items = entry.items.map(setActive)
+    if (active) activeEntry = entry.href!;
 
-  return {...entry, items: entry.items, active};
-}).reduce(flattenTOC, []);
+    entry.items = entry.items || [];
+    entry.items = entry.items.map(setActive);
 
-const currPage = remappedTOC.findIndex(e => e.href === activeEntry);
+    return { ...entry, items: entry.items, active };
+  })
+  .reduce(flattenTOC, []);
 
-const prevPage = remappedTOC.findLast((e, i) => i < currPage && e.href)?.href || '';
-const prevPageTitle = remappedTOC.findLast((e, i) => i < currPage && e.href)?.name || '';
+const currPage = remappedTOC.findIndex((e) => e.href === activeEntry);
 
-const nextPage = remappedTOC.find((e, i) => i > currPage && e.href)?.href || '';
-const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name || '';
+const prevPage = remappedTOC.findLast((e, i) => i < currPage && e.href)?.href || "";
+const prevPageTitle = remappedTOC.findLast((e, i) => i < currPage && e.href)?.name || "";
 
+const nextPage = remappedTOC.find((e, i) => i > currPage && e.href)?.href || "";
+const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name || "";
 ---
 
 <style is:global lang="scss">
@@ -152,7 +151,6 @@ const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name |
     h6 {
       @apply flex items-center gap-2 px-3 py-1.5 pb-2.5 !m-0 !mb-2 rounded-t-lg font-semibold;
     }
- 
   }
 
   blockquote.note {
@@ -169,7 +167,7 @@ const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name |
       max-height: 100%;
     }
     h6::after {
-      content: 'Note';
+      content: "Note";
     }
   }
 
@@ -186,7 +184,7 @@ const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name |
       height: 20px;
     }
     h6::after {
-      content: 'Important';
+      content: "Important";
     }
   }
 
@@ -195,15 +193,21 @@ const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name |
   }
 </style>
 
-<Site title={`${appShort} - ${entry.data.title}`} class="grid grid-rows-1 grid-cols-[auto_1fr_auto] overflow-y-auto overflow-x-hidden relative">
-  <TOCTracker client:only="svelte" headings={headings.map(h => h.slug)} />
-  <aside id="toc-sidebar" class="sticky block w-0 transition-all duration-700 ease-in-out [&.expanded]:w-[100vw] [&.expanded]:md:w-80 top-0 md:w-80 border-r-2 overflow-auto row-span-full">
+<Site
+  title={`${appShort} - ${entry.data.title}`}
+  class="grid grid-rows-1 grid-cols-[auto_1fr_auto] overflow-y-auto overflow-x-hidden relative"
+>
+  <TOCTracker client:only="svelte" headings={headings.map((h) => h.slug)} />
+  <aside
+    id="toc-sidebar"
+    class="sticky block w-0 transition-all duration-700 ease-in-out [&.expanded]:w-[100vw] [&.expanded]:md:w-80 top-0 md:w-80 border-r-2 overflow-auto row-span-full"
+  >
     <button id="toc-close" class="px-2 py-1.5 mt-1 flex items-center gap-2 mx-auto text-neutral-400 md:hidden">
       <XIcon class="inline-block w-6 h-6" /> Close Table of Contents
     </button>
-    <TableOfContents transition:persist appName={appName!}></TableOfContents>
+    <TableOfContents transition:persist appName={appName!} />
   </aside>
-  <article transition:animate={fade({ duration: '0.4s' })}>
+  <article transition:animate={fade({ duration: "0.4s" })}>
     <Breadcrumb client:only="svelte" appName={appName} />
     <div>{appName}</div>
     <div class={docStyle}>
@@ -212,33 +216,68 @@ const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name |
         <span class="-mt-1">
           {entry.data.type}
           &bullet;
-          {entry.data.type === 'Release Note' ? 
-            entry.data.releaseDate?.toLocaleDateString("en-US") :
-            entry.data.date.toLocaleDateString("en-US")
+          {
+            entry.data.type === "Release Note"
+              ? entry.data.releaseDate?.toLocaleDateString("en-US")
+              : entry.data.date.toLocaleDateString("en-US")
           }
           &bullet;
           {remarkPluginFrontmatter.minutesRead}
         </span>
         <div class="border-[0.5px] border-neutral-500 grow h-0 my-auto"></div>
-        <button id="toc-open" class="bg-aptean-dark rounded-md text-white border-white px-2 py-1.5 flex items-center gap-2 md:hidden">
+        <button
+          id="toc-open"
+          class="bg-aptean-dark rounded-md text-white border-white px-2 py-1.5 flex items-center gap-2 md:hidden"
+        >
           <TOCIcon class="w-6 h-6" />
         </button>
-        {prevPage && <a href={import.meta.env.BASE_URL + prevPage} class={`bg-aptean-dark !text-white px-2 py-1.5 rounded-l-lg -mr-1.5 flex items-center gap-2 ${!nextPage ? 'rounded-r-lg' : ''}`}>
-          <svg class="inline-block w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 20L1 12L11 4V9C16.5228 9 21 13.4772 21 19C21 19.2727 20.9891 19.5428 20.9677 19.81C19.5055 17.0364 16.6381 15.119 13.313 15.0053L13 15H10.9999L11 20ZM8.99986 13H10.9999L13.0341 13.0003L13.3814 13.0065C14.6657 13.0504 15.9053 13.3165 17.0568 13.7734C15.5898 12.0749 13.4204 11 11 11H9V8.16125L4.20156 12L8.99992 15.8387L8.99986 13Z"></path></svg>
-        </a>}
-        {nextPage && <a href={import.meta.env.BASE_URL + nextPage} class={`bg-aptean-dark !text-white px-2 py-1.5 rounded-r-lg flex items-center gap-2 ${!prevPage ? 'rounded-l-lg' : ''}`}>
-          <svg class="inline-block w-6 -scale-x-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 20L1 12L11 4V9C16.5228 9 21 13.4772 21 19C21 19.2727 20.9891 19.5428 20.9677 19.81C19.5055 17.0364 16.6381 15.119 13.313 15.0053L13 15H10.9999L11 20ZM8.99986 13H10.9999L13.0341 13.0003L13.3814 13.0065C14.6657 13.0504 15.9053 13.3165 17.0568 13.7734C15.5898 12.0749 13.4204 11 11 11H9V8.16125L4.20156 12L8.99992 15.8387L8.99986 13Z"></path></svg>
-        </a>}
+        {
+          prevPage && (
+            <a
+              href={import.meta.env.BASE_URL + prevPage}
+              class={`bg-aptean-dark !text-white px-2 py-1.5 rounded-l-lg -mr-1.5 flex items-center gap-2 ${!nextPage ? "rounded-r-lg" : ""}`}
+            >
+              <svg class="inline-block w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11 20L1 12L11 4V9C16.5228 9 21 13.4772 21 19C21 19.2727 20.9891 19.5428 20.9677 19.81C19.5055 17.0364 16.6381 15.119 13.313 15.0053L13 15H10.9999L11 20ZM8.99986 13H10.9999L13.0341 13.0003L13.3814 13.0065C14.6657 13.0504 15.9053 13.3165 17.0568 13.7734C15.5898 12.0749 13.4204 11 11 11H9V8.16125L4.20156 12L8.99992 15.8387L8.99986 13Z" />
+              </svg>
+            </a>
+          )
+        }
+        {
+          nextPage && (
+            <a
+              href={import.meta.env.BASE_URL + nextPage}
+              class={`bg-aptean-dark !text-white px-2 py-1.5 rounded-r-lg flex items-center gap-2 ${!prevPage ? "rounded-l-lg" : ""}`}
+            >
+              <svg
+                class="inline-block w-6 -scale-x-100"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M11 20L1 12L11 4V9C16.5228 9 21 13.4772 21 19C21 19.2727 20.9891 19.5428 20.9677 19.81C19.5055 17.0364 16.6381 15.119 13.313 15.0053L13 15H10.9999L11 20ZM8.99986 13H10.9999L13.0341 13.0003L13.3814 13.0065C14.6657 13.0504 15.9053 13.3165 17.0568 13.7734C15.5898 12.0749 13.4204 11 11 11H9V8.16125L4.20156 12L8.99992 15.8387L8.99986 13Z" />
+              </svg>
+            </a>
+          )
+        }
       </div>
-      { headings.length > 0 && 
-        <aside class="in-this-article not-prose md:!hidden !my-6">
-          <h2 class="text-base flex items-center p-3 py-2 bg-slate-200 text-aptean-dark border-b border-slate-400"><TOCIcon class="inline-block mr-2 w-6 h-6" /> In this article</h2>
-          <ul class="p-3 px-4">
-          { headings.map(heading => (
-            <li class="my-1 hover:text-black [&.active]:text-aptean-turquoise [&.active:before]:[content:'>_'] [&.active:before]:font-bold [&.active:before]:font-mono"><a href={'#' + heading.slug} onclick="changeActive(this.href.split('#')[1])">{heading.text}</a></li>
-          ))}
-          </ul>
-        </aside>
+      {
+        headings.length > 0 && (
+          <aside class="in-this-article not-prose md:!hidden !my-6">
+            <h2 class="text-base flex items-center p-3 py-2 bg-slate-200 text-aptean-dark border-b border-slate-400">
+              <TOCIcon class="inline-block mr-2 w-6 h-6" /> In this article
+            </h2>
+            <ul class="p-3 px-4">
+              {headings.map((heading) => (
+                <li class="my-1 hover:text-black [&.active]:text-aptean-turquoise [&.active:before]:[content:'>_'] [&.active:before]:font-bold [&.active:before]:font-mono">
+                  <a href={"#" + heading.slug} onclick="changeActive(this.href.split('#')[1])">
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
       }
       <Content />
       <!-- TODO: Add next page and previous page blocks -->
@@ -263,22 +302,32 @@ const nextPageTitle = remappedTOC.find((e, i) => i > currPage && e.href)?.name |
         </a>}
       </div> -->
     </div>
-    
   </article>
   <div class="sticky top-0 p-2 pt-7 overflow-hidden hidden md:grid md:w-96 grid-rows-[1fr_auto] gap-2">
-    { headings.length > 0 && 
-      <aside class="in-this-article !m-0 overflow-hidden grid grid-rows-[auto_1fr] grid-cols-1">
-        <h2 class="text-lg tracking-wider flex items-center p-3 py-2 bg-slate-100 text-aptean-dark border-b border-slate-400">{/*<TOCIcon class="inline-block mr-2" />*/} In this article</h2>
-        <div class="overflow-y-auto overflow-x-hidden pl-3">
-          <ul class="p-3 px-4 border-l-[1.5px] border-slate-400 relative">
-          { headings.map(heading => (
-            <li style={`margin-left: ${(heading.depth - 2)}rem`}  class="my-1 hover:text-black [&.active]:text-aptean-turquoise [&.active:before]:[content:'>_'] [&.active:before]:font-bold [&.active:before]:font-mono"><a href={'#' + heading.slug} onclick="changeActive(this.href.split('#')[1])">{heading.text}</a></li>
-          ))}
-          </ul>
-        </div>
-      </aside>
+    {
+      headings.length > 0 && (
+        <aside class="in-this-article !m-0 overflow-hidden grid grid-rows-[auto_1fr] grid-cols-1">
+          <h2 class="text-lg tracking-wider flex items-center p-3 py-2 bg-slate-100 text-aptean-dark border-b border-slate-400">
+            {/*<TOCIcon class="inline-block mr-2" />*/} In this article
+          </h2>
+          <div class="overflow-y-auto overflow-x-hidden pl-3">
+            <ul class="p-3 px-4 border-l-[1.5px] border-slate-400 relative">
+              {headings.map((heading) => (
+                <li
+                  style={`margin-left: ${heading.depth - 2}rem`}
+                  class="my-1 hover:text-black [&.active]:text-aptean-turquoise [&.active:before]:[content:'>_'] [&.active:before]:font-bold [&.active:before]:font-mono"
+                >
+                  <a href={"#" + heading.slug} onclick="changeActive(this.href.split('#')[1])">
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      )
     }
-    <FeedbackWidget slug={entry.slug}/>
+    <FeedbackWidget slug={entry.slug} />
   </div>
 </Site>
 
